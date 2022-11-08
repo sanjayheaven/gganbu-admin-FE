@@ -1,10 +1,12 @@
-import { Input, Button, message, notification, Checkbox, Divider } from "antd"
+import { Input, Button, message, notification, Checkbox, Divider, Dropdown, Menu } from "antd"
 
-import { User, Lock, TwitterLogo, FacebookLogo, GoogleLogo, GithubLogo, Eye, EyeSlash } from "phosphor-react"
+import { User, Lock, TwitterLogo, FacebookLogo, GoogleLogo, GithubLogo, Eye, EyeSlash, Translate } from "phosphor-react"
 
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
 import { StaffApi } from "../../api"
+import ChangeLanguage from "../../components/changeLanguage"
 import { createFormItems } from "../../components/form/formConfig"
 import { useThemeContext } from "../../context"
 
@@ -67,11 +69,19 @@ const Login = () => {
   return (
     // userlayout
     <div
-      className="w-full h-full flex items-center justify-center"
+      className="w-full h-full flex items-center justify-center relative"
       style={{
         background: "linear-gradient(180deg, #a1dff5 0%, #e4eff8 100%)",
       }}
     >
+      <div className="absolute top-0 right-0 w-full flex items-center justify-end ">
+        <ChangeLanguage>
+          <div className="p-3 mr-4 flex items-center cursor-pointer">
+            <Translate size={32} weight="fill" />
+          </div>
+        </ChangeLanguage>
+      </div>
+
       {/* login content */}
       <div className="m-3 md:m-0 w-full md:w-max p-10 px-4 sm:px-10 rounded-2xl bg-white">
         {createFormItems([
@@ -82,7 +92,7 @@ const Login = () => {
             required: true,
             children: (
               <Input
-                className=" md:w-[350px]"
+                className=" md:w-[350px] max-w-full"
                 allowClear
                 size="large"
                 placeholder="Username"
@@ -97,7 +107,7 @@ const Login = () => {
             required: true,
             children: (
               <Input
-                className=" md:w-[350px]"
+                className=" md:w-[350px] max-w-full"
                 size="large"
                 type={!showPassword && "password"}
                 placeholder="Password"

@@ -1,26 +1,18 @@
+import type { MenuProps } from "antd"
 import { Avatar as AvatarAnt, Badge, Dropdown, Input, Tooltip } from "antd"
-import { Menu, MenuProps, Modal } from "antd"
+import { Menu, Modal } from "antd"
 import { Globe, Question, Bell, User, GithubLogo } from "phosphor-react"
 import { ArrowsOut, ArrowsIn, MagnifyingGlass } from "phosphor-react"
 
 import { useState } from "react"
-import { useTranslation } from "react-i18next"
-import { lookupLocalStorage } from "../../config/locales"
+import ChangeLanguage from "../../components/changeLanguage"
 import { useThemeContext, useUserContext } from "../../context"
-
-const languageMenuItem: MenuProps["items"] = [
-  { label: "English", key: "en" },
-  { label: "简体中文", key: "zh" },
-]
 
 const iconSize = 26
 
 export default function Avatar() {
   const { user, setUser } = useUserContext()
   const { theme, setTheme } = useThemeContext()
-
-  const { i18n } = useTranslation()
-
   const { menuStyleBgColor, menuStyle, menuStyleColor, layout, isFullscreen } = theme
 
   const [showSearch, setShowSearch] = useState(false)
@@ -111,23 +103,11 @@ export default function Avatar() {
         </div>
       </Tooltip>
 
-      <Dropdown
-        trigger={["hover"]}
-        overlay={
-          <Menu
-            onClick={({ key }) => {
-              i18n.changeLanguage(key)
-              localStorage.setItem(lookupLocalStorage, key) // based on LanguageDetector
-              window.location.reload()
-            }}
-            items={languageMenuItem}
-          />
-        }
-      >
+      <ChangeLanguage>
         <div className="px-2 flex items-center hover:bg-[rgb(0,0,0,0.025)] h-full">
           <Globe size={iconSize} />
         </div>
-      </Dropdown>
+      </ChangeLanguage>
 
       <Dropdown trigger={["hover"]} overlay={<Menu items={MenuItems} />}>
         <div className="px-2 flex items-center hover:bg-[rgb(0,0,0,0.025)]">
