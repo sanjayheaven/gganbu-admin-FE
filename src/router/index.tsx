@@ -4,6 +4,7 @@ import Login from "../pages/login"
 import BasicLayout from "../layouts"
 import { House } from "phosphor-react"
 import InitAdmin from "../pages/login/initAdmin"
+import Redirect from "../pages/redirect"
 
 export const ConstantRoutes: IRoute[] = [
   { path: "/login", element: <Login /> },
@@ -19,7 +20,14 @@ export const createRoutesWrapper = (authRoutes: IRoute[]): IRoute[] => {
       path: "/",
       icon: <House />,
       element: <BasicLayout />,
-      children: authRoutes,
+      children: [
+        {
+          path: "/redirect/*",
+          hidden: true,
+          element: <Redirect />,
+        },
+        ...authRoutes,
+      ],
       hidden: true, // hidden for tags
     },
   ]
