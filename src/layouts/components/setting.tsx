@@ -7,7 +7,7 @@ import { ChromePicker } from "react-color"
 import copy from "copy-to-clipboard"
 
 import { X, Gear, Copy } from "phosphor-react"
-import { disable as disableDarkMode } from "darkreader"
+// import { disable as disableDarkMode } from "darkreader"
 import { presetMotionOptions } from "../../components/presets"
 import { primaryColorOptions } from "./utils"
 
@@ -90,7 +90,7 @@ export default function Setting({
           <div
             onClick={() => {
               setTheme({ ...theme, layout: "side" })
-              disableDarkMode()
+              // disableDarkMode()
             }}
             className="w-16 h-12 rounded flex items-center cursor-pointer"
             style={{ boxShadow: "0 1px 2.5px 0 rgb(0 0 0 / 18%)" }}
@@ -118,7 +118,7 @@ export default function Setting({
           <div
             onClick={() => {
               setTheme({ ...theme, layout: "top" })
-              disableDarkMode()
+              // disableDarkMode()
             }}
             className="w-16 h-12 cursor-pointer rounded"
             style={{ boxShadow: "0 1px 2.5px 0 rgb(0 0 0 / 18%)" }}
