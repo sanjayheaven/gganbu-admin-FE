@@ -81,7 +81,10 @@ export default function Avatar() {
       </Tooltip>
 
       <Tooltip title="Help" autoAdjustOverflow>
-        <div className="px-2 flex items-center hover:bg-[rgb(0,0,0,0.025)] h-full">
+        <div
+          onClick={() => window.open("https://sanjayheaven.github.io/gganbu-admin-docs")}
+          className="px-2 flex items-center hover:bg-[rgb(0,0,0,0.025)] h-full"
+        >
           <Question size={iconSize} />
         </div>
       </Tooltip>
