@@ -7,7 +7,7 @@ import { visualizer } from "rollup-plugin-visualizer"
 export default defineConfig({
   base: "/", // default '/', need to modify when deploy to GitHub Pages
   server: { port: 9527 },
-  plugins: [visualizer(), react(), viteCompression()],
+  plugins: [visualizer() as PluginOption, react(), viteCompression()],
 
   esbuild: {
     // pure: ["console.log"],
