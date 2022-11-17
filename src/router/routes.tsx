@@ -1,10 +1,14 @@
 import NotFound from "../pages/404"
 import PageView from "../layouts/layoutComponents/pageView"
-import { Navigate } from "react-router-dom"
+import { createBrowserRouter, Navigate } from "react-router-dom"
 import { IRoute } from "./type"
 import { Gauge, ShieldCheck, User, Printer } from "phosphor-react"
 import SuspenseWrapper from "./lazy"
 import { lazy } from "react"
+import { ConstantRouter } from "./constant"
+import ErrorPage from "./ErrorPage"
+import BasicLayout from "../layouts"
+import Redirect from "../pages/redirect"
 
 const LoginLogger = SuspenseWrapper(lazy(() => import("../pages/logger/loginLogger")))
 const DashBoard = SuspenseWrapper(lazy(() => import("../pages/dashboard/index")))
@@ -13,10 +17,28 @@ const IpWhitelist = SuspenseWrapper(lazy(() => import("../pages/security/ipWhite
 const AccountWhitelist = SuspenseWrapper(lazy(() => import("../pages/security/accountIWhitelist")))
 const RoleInfo = SuspenseWrapper(lazy(() => import("../pages/staff/roleInfo")))
 
+export const router = createBrowserRouter([
+  ...ConstantRouter.map((i) => ({ ...i, errorElement: <ErrorPage /> })),
+  {
+    path: "/",
+    element: <BasicLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "redirect/*",
+        element: <Redirect />,
+      },
+      {
+        path: "dashboard",
+        element: <DashBoard />,
+      },
+    ],
+  },
+])
+
 // Note: Path shoule be FULL from / to make path is only
 export const routes: IRoute[] = [
   { path: "/", element: <Navigate to="/dashboard" />, hidden: true },
-
   {
     path: "/dashboard",
     title: "Dashboard",
