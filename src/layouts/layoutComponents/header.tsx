@@ -3,7 +3,11 @@ import { Layout } from "antd"
 import { useThemeContext } from "../../context"
 import { Menu, Logo, Tags, Bread, Avatar } from "../components"
 
-export default function Header({ headerWrapperClass, ...props }: { headerWrapperClass?: string } & LayoutProps) {
+export default function Header({
+  headerWrapperClass,
+  isMobile = false,
+  ...props
+}: { isMobile?: boolean; headerWrapperClass?: string } & LayoutProps) {
   const { theme } = useThemeContext()
 
   const { fixedHeader, collapsed, layout, showTags, showLogo, showBread } = theme
@@ -39,7 +43,6 @@ export default function Header({ headerWrapperClass, ...props }: { headerWrapper
         }}
       >
         <>{layout == "side" && <>{(showBread && <Bread />) || <div></div>}</>}</>
-
         <>
           {layout == "mix" && (
             <div className=" flex items-center">

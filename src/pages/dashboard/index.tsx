@@ -1,5 +1,5 @@
 import { Card } from "antd"
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router-dom"
 import newcustomer from "../../assets/images/newcustomer.png"
 import orderstoday from "../../assets/images/orderstoday.png"
 import orderswaiting from "../../assets/images/orderswaiting.png"
