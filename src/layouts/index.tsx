@@ -6,6 +6,7 @@ import SideLayout from "./sideLayout"
 import { Setting, BackTop } from "./components"
 import { useFullscreen } from "ahooks"
 import { useNProgressColor } from "../hooks"
+import MobileLayout from "./mobileLayout"
 
 export default function BasicLayout() {
   const [showDrawer, setShowDrawer] = useState(false)
@@ -32,13 +33,14 @@ export default function BasicLayout() {
     <>
       {/* here name id fullscreen to make sure the ant design all component are topper */}
       <div ref={fullscreenRef} id={(isFullscreen && "fullscreen") || "non-fullscreen"}>
-        {/* {import.meta.env.DEV && (
+        <div className="hidden sm:block">
           <Setting setShowDrawer={setShowDrawer} visible={showDrawer} onClose={() => setShowDrawer(false)} />
-          )} */}
-        <Setting setShowDrawer={setShowDrawer} visible={showDrawer} onClose={() => setShowDrawer(false)} />
+          {theme.layout == "mix" ? <MixLayout /> : theme.layout == "top" ? <TopLayout /> : <SideLayout />}
+        </div>
 
-        {theme.layout == "mix" ? <MixLayout /> : theme.layout == "top" ? <TopLayout /> : <SideLayout />}
-
+        <div className="block sm:hidden">
+          <MobileLayout />
+        </div>
         <BackTop />
       </div>
     </>

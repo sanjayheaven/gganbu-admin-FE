@@ -1,4 +1,10 @@
-import { HashRouter as Router, useRoutes } from "react-router-dom"
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createHashRouter,
+  HashRouter as Router,
+  useRoutes,
+} from "react-router-dom"
 import { useLocation, matchRoutes, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { ConstantRoutes, createRoutesWrapper, createAuthRoutes, IRoute, routes } from "./router"
@@ -18,6 +24,7 @@ import "./config/locales"
 import zhCN from "antd/es/locale/zh_CN"
 import { useTranslation } from "react-i18next"
 import { localLanguage } from "./config/locales"
+import { router } from "./router/routes"
 
 /**
  * here is the entry of router.
@@ -36,7 +43,7 @@ const RouterAuth = () => {
 
   const authRoutesWrapper = createRoutesWrapper(authRoutes)
   console.log(authRoutes, authRoutesWrapper, "看看对应的路由")
-  const Element = useRoutes(authRoutesWrapper)
+  const Element = useRoutes(authRoutesWrapper as any)
 
   const { t } = useTranslation()
 
@@ -69,7 +76,7 @@ const RouterAuth = () => {
       if (!user._id) {
         await getStaffByToken()
       }
-      const matched = matchRoutes(authRoutesWrapper, location)
+      const matched = matchRoutes(authRoutesWrapper as any, location)
       console.log("matched", matched)
       if (!matched) {
         console.log("no matched")
@@ -88,6 +95,7 @@ const RouterAuth = () => {
   }
 
   useEffect(() => {
+    console.log(location.pathname, "pathname 换了")
     routerBeforeEach()
   }, [location.pathname])
 
@@ -105,6 +113,7 @@ export default function App() {
         <UserContextProvider>
           <TagContextProvider>
             <div className="h-screen">
+              {/* <RouterProvider router={router} /> */}
               <Router>
                 <RouterAuth />
               </Router>

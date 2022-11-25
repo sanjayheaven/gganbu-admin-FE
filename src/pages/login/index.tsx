@@ -4,7 +4,7 @@ import { User, Lock, TwitterLogo, FacebookLogo, GoogleLogo, GithubLogo, Eye, Eye
 
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router-dom"
 import { StaffApi } from "../../api"
 import ChangeLanguage from "../../components/changeLanguage"
 import { createFormItems } from "../../components/form/formConfig"
