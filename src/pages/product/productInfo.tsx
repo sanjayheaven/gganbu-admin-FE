@@ -61,7 +61,7 @@ export default () => {
             <a
               onClick={() => {
                 setSelectedItem({ ...record })
-                setModal({ ...modal, visible: true, title: "Edit" })
+                setModal({ ...modal, open: true, title: "Edit" })
               }}
             >
               Edit

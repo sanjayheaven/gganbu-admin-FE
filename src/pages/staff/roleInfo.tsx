@@ -55,7 +55,7 @@ export default () => {
       } else {
         await RoleApi.createRole(selectedItem)
       }
-      setModal({ ...modal, visible: false })
+      setModal({ ...modal, open: false })
       await getInfo() // reget the data
     } catch (error) {
       console.log(error)
@@ -77,7 +77,7 @@ export default () => {
             <a
               onClick={() => {
                 setSelectedItem({ ...record })
-                setModal({ ...modal, visible: true, title: "Edit" })
+                setModal({ ...modal, open: true, title: "Edit" })
               }}
             >
               Edit
@@ -133,7 +133,7 @@ export default () => {
         title={
           <Button
             onClick={() => {
-              setModal({ ...modal, title: "Add", visible: true })
+              setModal({ ...modal, title: "Add", open: true })
               setSelectedItem({})
             }}
             type="primary"

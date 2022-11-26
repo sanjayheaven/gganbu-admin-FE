@@ -34,7 +34,7 @@ export default function BasicLayout() {
       {/* here name id fullscreen to make sure the ant design all component are topper */}
       <div ref={fullscreenRef} id={(isFullscreen && "fullscreen") || "non-fullscreen"}>
         <div className="hidden sm:block">
-          <Setting setShowDrawer={setShowDrawer} visible={showDrawer} onClose={() => setShowDrawer(false)} />
+          <Setting setShowDrawer={setShowDrawer} open={showDrawer} onClose={() => setShowDrawer(false)} />
           {theme.layout == "mix" ? <MixLayout /> : theme.layout == "top" ? <TopLayout /> : <SideLayout />}
         </div>
 
