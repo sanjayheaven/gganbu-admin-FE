@@ -1,3 +1,42 @@
+# CHANGELOG
+
+## [0.1.1](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.1.0...0.1.1) (2022-11-26)
+
+
+### 📚 Documentation
+
+* adjust release config and fix changelog link ([4bd48eb](https://github.com/sanjayheaven/gganbu-admin-FE/commit/4bd48eb0ba24785f60a24634b8d60417f81ff088))
+* change to RABC ([d9ae69d](https://github.com/sanjayheaven/gganbu-admin-FE/commit/d9ae69d1fd3793d38d92aef78e732586064bfb4f))
+
+
+### 🐎 Performance Improvements
+
+* tags bar upgrade ([d1ddefa](https://github.com/sanjayheaven/gganbu-admin-FE/commit/d1ddefae6ff8b45e7b55606e63cea8ff705cb73a))
+
+
+### ⬆️ Chores
+
+* add mobilelayout(tentative) ([8257657](https://github.com/sanjayheaven/gganbu-admin-FE/commit/82576577e118a989eb8303cad68fc17a30274fca))
+* add tranlation in login page ([841dbe8](https://github.com/sanjayheaven/gganbu-admin-FE/commit/841dbe8c5b6163bf92dfd4148b87bbfada5b8828))
+* add visualizer and delete darkreader ([817a0fb](https://github.com/sanjayheaven/gganbu-admin-FE/commit/817a0fbe7e4c99886acc737ffba4d8c58e3248af))
+* add visulizer ([b642912](https://github.com/sanjayheaven/gganbu-admin-FE/commit/b642912f1a0f0cee70cd1ca22af699e2b1bbd65a))
+* change domin to gganbu-admin ([b67e39a](https://github.com/sanjayheaven/gganbu-admin-FE/commit/b67e39a5bd2c646f17edfc56d844ff6f30f899b0))
+* change to RBAC 🤣 ([424c335](https://github.com/sanjayheaven/gganbu-admin-FE/commit/424c3351f9d2b651288478c016037baa6e46984e))
+* link i18n with local ant Antd ([343e529](https://github.com/sanjayheaven/gganbu-admin-FE/commit/343e529c237d3ef9a400b723c9d8e4163b8b52c0))
+* updates ([bcce169](https://github.com/sanjayheaven/gganbu-admin-FE/commit/bcce1696589dca09cb9032e11fbc7ba15f1eaece))
+* upgrade router ([bd9bcf6](https://github.com/sanjayheaven/gganbu-admin-FE/commit/bd9bcf68777590b21e4725ba7c2a1d58c9c78060))
+
+
+### 🐛 Bug Fixes
+
+* delete dev dependency ([5ab52ca](https://github.com/sanjayheaven/gganbu-admin-FE/commit/5ab52ca1ab1c6363dda482b3fd04066048479c30))
+* login page navigate change to replace ([25f2798](https://github.com/sanjayheaven/gganbu-admin-FE/commit/25f2798f7708874d87909fb48841b2adaa2eb17b))
+
+
+### 🔧 Continuous Integration
+
+* update workflow trigger rules ([e59a272](https://github.com/sanjayheaven/gganbu-admin-FE/commit/e59a272afbe254ff6a9e7e5d69fd5e816db1ad19))
+
 # Changelog
 
 ## 0.1.0 (2022-11-06)
