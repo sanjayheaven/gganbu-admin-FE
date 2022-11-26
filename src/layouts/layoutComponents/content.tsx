@@ -1,7 +1,6 @@
+import { FloatButton, Layout } from "antd"
 import type { LayoutProps } from "antd"
-import { Layout } from "antd"
 import { useThemeContext } from "../../context"
-import { BackTop } from "../components"
 
 export default function Content({ children, ...props }: LayoutProps) {
   const { theme } = useThemeContext()
@@ -10,7 +9,7 @@ export default function Content({ children, ...props }: LayoutProps) {
     <>
       <Layout.Content {...props}>{children}</Layout.Content>
 
-      {layout == "mix" && fixedHeader && <BackTop />}
+      {layout == "mix" && fixedHeader && <FloatButton.BackTop />}
     </>
   )
 }
