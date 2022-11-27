@@ -48,7 +48,7 @@ export const ThemeConfig: ITheme = {
   menuStyle: "white",
   menuStyleColor: "#FFFFFFA6",
   menuStyleBgColor: "#00152a",
-  primaryColor: "#1677ff",
+  primaryColor: "#2cc203",
   layout: "side",
   showTags: true,
   fixedHeader: true,

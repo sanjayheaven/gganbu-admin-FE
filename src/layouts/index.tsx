@@ -3,10 +3,11 @@ import { useThemeContext } from "../context"
 import MixLayout from "./mixLayout"
 import TopLayout from "./topLayout"
 import SideLayout from "./sideLayout"
-import { Setting, BackTop } from "./components"
+import { Setting } from "./components"
 import { useFullscreen } from "ahooks"
 import { useNProgressColor } from "../hooks"
 import MobileLayout from "./mobileLayout"
+import { FloatButton } from "antd"
 
 export default function BasicLayout() {
   const [showDrawer, setShowDrawer] = useState(false)
@@ -41,7 +42,7 @@ export default function BasicLayout() {
         <div className="block sm:hidden">
           <MobileLayout />
         </div>
-        <BackTop />
+        <FloatButton.BackTop />
       </div>
     </>
   )
