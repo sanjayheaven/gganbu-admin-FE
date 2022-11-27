@@ -67,17 +67,18 @@ export default function Setting({
     <>
       <div
         style={{
+          position: "fixed",
           top: "calc(50% - 24px)",
           zIndex: 10001,
           backgroundColor: primaryColor,
           borderRadius: "4px 0 0 4px",
-          right: (!props.visible && "0px") || width,
+          right: (!props.open && "0px") || width,
           transition: "all 0.3s cubic-bezier(.23,1,.32,1),box-shadow .3s cubic-bezier(.23,1,.32,1)",
         }}
-        onClick={() => setShowDrawer(!props.visible)}
-        className=" text-white fixed w-12 h-12 cursor-pointer flex items-center justify-center"
+        onClick={() => setShowDrawer(!props.open)}
+        className=" text-white w-12 h-12 cursor-pointer flex items-center justify-center"
       >
-        {(!props.visible && <Gear size={20} />) || <X size={20} />}
+        {(!props.open && <Gear size={20} />) || <X size={20} />}
       </div>
 
       <Drawer closable={false} width={width} placement="right" {...props}>
