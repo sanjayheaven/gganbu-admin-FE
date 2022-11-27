@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## [0.2.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.1.1...0.2.0) (2022-11-27)
+
+
+### ✨ Features
+
+* update antd to V5 ([36e138d](https://github.com/sanjayheaven/gganbu-admin-FE/commit/36e138d51e06cdec41f079d63831157905c0922f))
+
+
+### ⬆️ Chores
+
+* change theme context ([ae8ddb1](https://github.com/sanjayheaven/gganbu-admin-FE/commit/ae8ddb10e26b3a142cf16b7b90509b6e535bcc9c))
+* reset style ([54ca45e](https://github.com/sanjayheaven/gganbu-admin-FE/commit/54ca45ea1f7e610e914345a9a3b317bd7a0affcd))
+
+
+### 🐛 Bug Fixes
+
+* change BackTop to FloatButton ([6e10570](https://github.com/sanjayheaven/gganbu-admin-FE/commit/6e105702a5b8e8cad6a4224943bf01e948ad1e76))
+* deprecate pageheader ([30fd550](https://github.com/sanjayheaven/gganbu-admin-FE/commit/30fd550c8f6eef530bf248d70d6da96aba191990))
+* update Dropdown prop overlay to menu ([bea2f81](https://github.com/sanjayheaven/gganbu-admin-FE/commit/bea2f8192dd54e51377512e371198548fcbf6e74))
+* update prop visible to open ([7854bcd](https://github.com/sanjayheaven/gganbu-admin-FE/commit/7854bcd08c2f283cc7f993fa2d22e875f1caa352))
+
+
+### 🔧 Continuous Integration
+
+* update deploy workflow ([a5c9929](https://github.com/sanjayheaven/gganbu-admin-FE/commit/a5c9929030e4236cbe85fa39b76a6f148cdfd024))
+
 ## [0.1.1](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.1.0...0.1.1) (2022-11-26)
 
 
