@@ -28,7 +28,9 @@ export default function Header({
     >
       <Layout.Header
         {...props}
+        hasSider={false}
         style={{
+          backgroundColor: "white",
           ...(layout == "top" && {
             ...(theme.menuStyle == "transparent" && {
               backgroundColor: "transparent",

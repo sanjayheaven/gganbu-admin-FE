@@ -47,7 +47,7 @@ export default function Bread() {
 
         return (
           <div className=" flex items-center cursor-pointer" key={route.path}>
-            <Dropdown trigger={["hover"]} overlay={(menuItems.length && <Menu items={menuItems} />) || <></>}>
+            <Dropdown trigger={["hover"]} menu={{ items: menuItems }}>
               <div className=" flex items-center gap-1">
                 {(theme.showBreadIcon || route.path == "/") && route.icon}
                 {route.title}

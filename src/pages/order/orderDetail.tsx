@@ -1,4 +1,4 @@
-import { Card, Table, Button, PageHeader, Tabs } from "antd"
+import { Card, Table, Button, Tabs } from "antd"
 import { useState } from "react"
 
 export default function OrderDetail() {
@@ -15,7 +15,7 @@ export default function OrderDetail() {
 
   return (
     <div>
-      <PageHeader
+      {/* <div
         className=" sticky top-0 z-10 mb-4"
         ghost={false}
         onBack={() => window.history.back()}
@@ -35,7 +35,7 @@ export default function OrderDetail() {
         }
       >
         This area place main Info. like, Customer Name, Create Time, Status, etc.
-      </PageHeader>
+      </div> */}
 
       {tabKey == "1" && (
         <>

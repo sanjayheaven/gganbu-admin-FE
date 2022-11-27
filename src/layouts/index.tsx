@@ -3,10 +3,11 @@ import { useThemeContext } from "../context"
 import MixLayout from "./mixLayout"
 import TopLayout from "./topLayout"
 import SideLayout from "./sideLayout"
-import { Setting, BackTop } from "./components"
+import { Setting } from "./components"
 import { useFullscreen } from "ahooks"
 import { useNProgressColor } from "../hooks"
 import MobileLayout from "./mobileLayout"
+import { FloatButton } from "antd"
 
 export default function BasicLayout() {
   const [showDrawer, setShowDrawer] = useState(false)
@@ -34,14 +35,14 @@ export default function BasicLayout() {
       {/* here name id fullscreen to make sure the ant design all component are topper */}
       <div ref={fullscreenRef} id={(isFullscreen && "fullscreen") || "non-fullscreen"}>
         <div className="hidden sm:block">
-          <Setting setShowDrawer={setShowDrawer} visible={showDrawer} onClose={() => setShowDrawer(false)} />
+          <Setting setShowDrawer={setShowDrawer} open={showDrawer} onClose={() => setShowDrawer(false)} />
           {theme.layout == "mix" ? <MixLayout /> : theme.layout == "top" ? <TopLayout /> : <SideLayout />}
         </div>
 
         <div className="block sm:hidden">
           <MobileLayout />
         </div>
-        <BackTop />
+        <FloatButton.BackTop />
       </div>
     </>
   )
