@@ -8,7 +8,7 @@ import { useState } from "react"
  */
 export default function useModal(initState?: ModalProps) {
   const [modal, setModal] = useState({
-    onCancel: () => setModal({ ...modal, visible: false }),
+    onCancel: () => setModal({ ...modal, open: false }),
     ...initState,
   })
   return {

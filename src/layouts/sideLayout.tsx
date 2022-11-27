@@ -37,6 +37,7 @@ export default function SideLayout() {
       <Sider
         className={layoutClass.sider}
         style={{
+          position: "fixed",
           boxShadow: "2px 0 8px 0 rgb(29 35 41 / 5%)",
           ...(menuStyle == "transparent" && { backgroundColor: "transparent" }),
           ...(menuStyle == "white" && { backgroundColor: "white" }),

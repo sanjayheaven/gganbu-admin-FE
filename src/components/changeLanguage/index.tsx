@@ -14,16 +14,14 @@ const ChangeLanguage = ({ children }: { children: ReactNode }) => {
     <>
       <Dropdown
         trigger={["hover"]}
-        overlay={
-          <Menu
-            onClick={({ key }) => {
-              i18n.changeLanguage(key)
-              localStorage.setItem(lookupLocalStorage, key) // based on LanguageDetector
-              window.location.reload()
-            }}
-            items={languageMenuItem}
-          />
-        }
+        menu={{
+          items: languageMenuItem,
+          onClick: ({ key }) => {
+            i18n.changeLanguage(key)
+            localStorage.setItem(lookupLocalStorage, key) // based on LanguageDetector
+            window.location.reload()
+          },
+        }}
       >
         {children}
       </Dropdown>

@@ -67,7 +67,7 @@ export default () => {
       } else {
         await StaffApi.createStaff(selectedItem)
       }
-      setModal({ ...modal, visible: false })
+      setModal({ ...modal, open: false })
       await getInfo() // re-get the data
     } catch (error) {
       console.log(error)
@@ -102,7 +102,7 @@ export default () => {
           <Button
             onClick={() => {
               setSelectedItem({ ...record })
-              setResetPasswordModal({ ...resetPasswordModal, visible: true })
+              setResetPasswordModal({ ...resetPasswordModal, open: true })
             }}
             danger
             type="primary"
@@ -161,7 +161,7 @@ export default () => {
           onClick={() => {
             console.log(record)
             setSelectedItem({ ...record })
-            setModal({ ...modal, visible: true, title: "Edit" })
+            setModal({ ...modal, open: true, title: "Edit" })
           }}
         >
           Detail
@@ -212,7 +212,7 @@ export default () => {
         title={
           <Button
             onClick={() => {
-              setModal({ ...modal, title: "Add", visible: true })
+              setModal({ ...modal, title: "Add", open: true })
               setSelectedItem({})
             }}
             type="primary"
@@ -242,7 +242,7 @@ export default () => {
         onFinish={async (value) => {
           try {
             await StaffApi.resetPassword(selectedItem._id, value)
-            setResetPasswordModal({ ...resetPasswordModal, visible: false })
+            setResetPasswordModal({ ...resetPasswordModal, open: false })
           } catch (error) {
             console.log(error)
           }

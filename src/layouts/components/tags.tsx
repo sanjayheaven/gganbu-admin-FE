@@ -66,7 +66,10 @@ export default function Tags() {
                 <SortableItem key={tag.path} id={tag.path}>
                   <Dropdown
                     trigger={["contextMenu"]}
-                    overlay={<Menu onClick={({ key }) => handleClickMenuItem(key)} items={menuItems} />}
+                    menu={{
+                      onClick: ({ key }) => handleClickMenuItem(key),
+                      items: menuItems,
+                    }}
                   >
                     <Tag
                       key={tag.path}
@@ -107,7 +110,10 @@ export default function Tags() {
           trigger={["click"]}
           className=" whitespace-nowrap "
           placement="bottomRight"
-          overlay={<Menu onClick={({ key }) => handleClickMenuItem(key)} items={menuItems} />}
+          menu={{
+            onClick: ({ key }) => handleClickMenuItem(key),
+            items: menuItems,
+          }}
         >
           <div className="h-full flex items-center px-2 border-solid border-0 border-l-[1px] border-[#d6d6d6]">
             <CaretDown className=" cursor-pointer" size={iconSize} />
