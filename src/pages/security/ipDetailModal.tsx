@@ -1,18 +1,20 @@
-import { Input, ModalProps } from "antd"
-import type { IIp } from "./type"
 import type { IUseSelectedItemRes } from "../../hooks/useSelectedItem"
+import type { IWhitelist } from "./type"
 
-import { Modal, Form } from "antd"
+import type { ModalProps } from "antd"
+import { Modal, Form, Input } from "antd"
 import { createFormItems } from "../../components/form/formConfig"
+import { useTranslation } from "react-i18next"
 
 // This is for Add & Edit
-export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSelectedItemRes<IIp>) => {
+export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSelectedItemRes<Partial<IWhitelist>>) => {
+  const { t } = useTranslation()
   return (
     <Modal {...modal}>
       <Form {...{ labelCol: { span: 3 } }}>
         {createFormItems([
           {
-            label: "Ip",
+            label: "IP",
             required: true,
             children: (
               <Input
@@ -22,7 +24,7 @@ export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSe
             ),
           },
           {
-            label: "Desc",
+            label: t("DESC"),
             required: true,
             children: (
               <Input.TextArea
