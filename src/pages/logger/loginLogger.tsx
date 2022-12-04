@@ -1,4 +1,5 @@
-import { Card, Input, Table, TablePaginationConfig, Tag } from "antd"
+import { Card, Input, Table, type TablePaginationConfig, Tag } from "antd"
+import { useTranslation } from "react-i18next"
 import { LoggerApi } from "../../api"
 import FilterAction from "../../components/filterAction"
 import { createFormItems } from "../../components/form/formConfig"
@@ -14,10 +15,11 @@ const LoginLogger = () => {
   const { loading, setLoading } = useLoading(false)
   const { data, setData } = useData()
   const { pagination, setPagination } = useTablePagination()
+  const { t } = useTranslation()
 
   const columns = [
     {
-      title: "User",
+      title: t("USERNAME"),
       dataIndex: "username",
       render: (_, record) => {
         return (
@@ -28,7 +30,7 @@ const LoginLogger = () => {
       },
     },
     {
-      title: "Location",
+      title: t("LOCATION"),
       dataIndex: "location",
       render: (_, record) => {
         return (
@@ -50,7 +52,7 @@ const LoginLogger = () => {
       },
     },
     {
-      title: "Time",
+      title: t("TIME"),
       dataIndex: "time",
       render: (_, record) => {
         return (
@@ -61,8 +63,8 @@ const LoginLogger = () => {
       },
     },
     {
-      title: "Status",
-      dataIndex: "statua",
+      title: t("STATUS"),
+      dataIndex: "status",
       render: (_, record) => {
         return (
           <div className=" flex gap-2 items-center">
@@ -72,7 +74,7 @@ const LoginLogger = () => {
       },
     },
     {
-      title: "Remark",
+      title: t("REMARK"),
       dataIndex: "remark",
       render: (_, record) => {
         return (
@@ -109,13 +111,13 @@ const LoginLogger = () => {
         <div className="grid grid-cols-4 gap-4">
           {createFormItems([
             {
-              label: "Name",
+              label: t("SEARCH"),
               className: "mb-0",
               children: (
                 <Input
                   value={filter.name}
                   onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-                  placeholder="username/ip"
+                  placeholder={`${t("USERNAME")}/${t("IP")}`}
                 />
               ),
             },

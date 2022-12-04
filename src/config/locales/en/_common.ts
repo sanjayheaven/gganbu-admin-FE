@@ -13,4 +13,7 @@ export default {
   DELETE: "Delete",
   DETAIL: "Detail",
   ROLE: "Role",
+  TIME: "Time",
+  REMARK: "Remark",
+  LOCATION: "Location",
 }

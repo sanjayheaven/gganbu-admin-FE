@@ -13,4 +13,7 @@ export default {
   DELETE: "删除",
   DETAIL: "详情",
   ROLE: "角色",
+  TIME: "时间",
+  REMARK: "备注",
+  LOCATION: "地址",
 }
