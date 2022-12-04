@@ -26,8 +26,6 @@ export default function MobileLayout() {
     return { sider, content, header, headerWrapper }
   }, [theme])
 
-  // const theme
-
   return (
     <Layout className="min-h-screen ">
       <Header className={layoutClass.header} headerWrapperClass={layoutClass.headerWrapper} />

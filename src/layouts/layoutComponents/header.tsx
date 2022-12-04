@@ -3,6 +3,7 @@ import { Layout } from "antd"
 import type { CSSProperties } from "react"
 import { useThemeContext } from "../../context"
 import { Menu, Logo, Tags, Bread, Avatar } from "../components"
+import { ILayoutStyle } from "../utils"
 
 export default function Header({
   headerWrapperClass,
@@ -16,15 +17,12 @@ export default function Header({
   headerStyle?: CSSProperties
 } & LayoutProps) {
   const { theme } = useThemeContext()
+  const commonHeaderWrapperStyle: ILayoutStyle["headerWrapperStyle"] = {
+    zIndex: 50,
+    ...(theme.fixedHeader && { boxShadow: " 0 1px 4px 0 rgb(0 21 41 / 12%)" }),
+  }
   return (
-    <div
-      className={headerWrapperClass}
-      style={{
-        ...headerWrapperStyle,
-        zIndex: 50,
-        ...(theme.fixedHeader && { boxShadow: " 0 1px 4px 0 rgb(0 21 41 / 12%)" }),
-      }}
-    >
+    <div style={{ ...headerWrapperStyle, ...commonHeaderWrapperStyle }}>
       <Layout.Header hasSider={false} style={{ ...headerStyle }}>
         <>{theme.layout == "side" && <>{(theme.showBread && <Bread />) || <div></div>}</>}</>
         <>

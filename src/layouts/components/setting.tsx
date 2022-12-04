@@ -1,5 +1,5 @@
 import { Checkbox, Radio, Select, Switch, Tooltip } from "antd"
-import { Button, DrawerProps, message, Popover } from "antd"
+import { Button, type DrawerProps, message, Popover } from "antd"
 import { Drawer, Divider } from "antd"
 import { useMemo, useState } from "react"
 import { useThemeContext } from "../../context"
@@ -7,7 +7,6 @@ import { ChromePicker } from "react-color"
 import copy from "copy-to-clipboard"
 
 import { X, Gear, Copy } from "phosphor-react"
-// import { disable as disableDarkMode } from "darkreader"
 import { presetMotionOptions } from "../../components/presets"
 import { primaryColorOptions } from "./utils"
 
@@ -89,10 +88,7 @@ export default function Setting({
         <div className="grid grid-cols-3 items-center justify-items-center mb-8">
           {/* side */}
           <div
-            onClick={() => {
-              setTheme({ ...theme, layout: "side" })
-              // disableDarkMode()
-            }}
+            onClick={() => setTheme({ ...theme, layout: "side" })}
             className="w-16 h-12 rounded flex items-center cursor-pointer"
             style={{ boxShadow: "0 1px 2.5px 0 rgb(0 0 0 / 18%)" }}
           >
@@ -117,10 +113,7 @@ export default function Setting({
           </div>
           {/* top */}
           <div
-            onClick={() => {
-              setTheme({ ...theme, layout: "top" })
-              // disableDarkMode()
-            }}
+            onClick={() => setTheme({ ...theme, layout: "top" })}
             className="w-16 h-12 cursor-pointer rounded"
             style={{ boxShadow: "0 1px 2.5px 0 rgb(0 0 0 / 18%)" }}
           >
@@ -144,14 +137,7 @@ export default function Setting({
           </div>
           {/* mix */}
           <div
-            onClick={() => {
-              setTheme({ ...theme, layout: "mix" })
-              // enableDarkMode({
-              //   brightness: 100,
-              //   contrast: 90,
-              //   sepia: 10,
-              // })
-            }}
+            onClick={() => setTheme({ ...theme, layout: "mix" })}
             className="w-16 h-12 rounded cursor-pointer"
             style={{ boxShadow: "0 1px 2.5px 0 rgb(0 0 0 / 18%)" }}
           >
@@ -197,6 +183,23 @@ export default function Setting({
             onChange={(value) => setTheme({ ...theme, collapsed: value })}
           />
         </div>
+
+        {/* <Divider>
+          <h3>Theme</h3>
+        </Divider>
+
+        <div className=" flex items-center justify-center">
+          <Radio.Group
+            value={theme.algorithm}
+            buttonStyle="solid"
+            className="m-auto"
+            onChange={(e) => setTheme({ ...theme, algorithm: e.target.value })}
+          >
+            <Radio value="default">Default</Radio>
+            <Radio value="dark">Dark</Radio>
+            <Radio value="compact">Dark</Radio>
+          </Radio.Group>
+        </div> */}
 
         <Divider>
           <h3>Menu Style</h3>

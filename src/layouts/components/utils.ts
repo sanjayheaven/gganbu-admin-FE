@@ -1,4 +1,6 @@
-export const primaryColorOptions = [
+import type { CSSProperties } from "react"
+
+export const primaryColorOptions: { title: string; color: CSSProperties["color"] }[] = [
   { title: "Default", color: "#20a679" },
   { title: "Grab", color: "#21af49" },
   { title: "FoodPanda", color: "#d70f63" },
