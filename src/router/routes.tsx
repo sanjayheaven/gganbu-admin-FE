@@ -92,26 +92,26 @@ export const routes: IRoute[] = [
       },
     ],
   },
-  {
-    path: "/security",
-    title: t("router.SECURITY_MANAGE"),
-    element: <PageView />,
-    icon: <ShieldCheck />,
-    children: [
-      {
-        path: "/security/whiteIpInfo",
-        title: t("router.IP_WHITELIST"),
-        element: <IpWhitelist />,
-        keepAlive: true,
-      },
-      {
-        path: "/security/whiteAccountInfo",
-        title: t("router.ACCOUNT_WHITELIST"),
-        element: <AccountWhitelist />,
-        keepAlive: true,
-      },
-    ],
-  },
+  // {
+  //   path: "/security",
+  //   title: t("router.SECURITY_MANAGE"),
+  //   element: <PageView />,
+  //   icon: <ShieldCheck />,
+  //   children: [
+  //     {
+  //       path: "/security/whiteIpInfo",
+  //       title: t("router.IP_WHITELIST"),
+  //       element: <IpWhitelist />,
+  //       keepAlive: true,
+  //     },
+  //     {
+  //       path: "/security/whiteAccountInfo",
+  //       title: t("router.ACCOUNT_WHITELIST"),
+  //       element: <AccountWhitelist />,
+  //       keepAlive: true,
+  //     },
+  //   ],
+  // },
   { path: "*", title: "Not Found", hidden: true, element: <NotFound /> },
 ]
 
