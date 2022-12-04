@@ -5,4 +5,10 @@ export default {
   NAME: "Name",
   USERNAME: "Username",
   PHONE: "Phone",
+  PASSWORD: "Password",
+  ACTION: "Action",
+  EDIT: "Edit",
+  ADD: "Add",
+  DETAIL: "Detail",
+  ROLE: "Role",
 }

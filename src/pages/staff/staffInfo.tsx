@@ -13,11 +13,7 @@ import { useState } from "react"
 import { User, PhoneCall } from "phosphor-react"
 import ResetPasswordModal from "./components/resetPasswordModal"
 import { useTranslation } from "react-i18next"
-
-export const statusOptions = [
-  { label: "Active", value: "active" },
-  { label: "Inactive", value: "inactive" },
-]
+import { statusOptions } from "./utils"
 
 export default () => {
   const { filter, setFilter } = useFilter<IFilterStaff>({})
@@ -76,7 +72,7 @@ export default () => {
 
   const columns: TableColumnsType<IStaff> = [
     {
-      title: "Name",
+      title: t("NAME"),
       dataIndex: "name",
       render: (_, record) => {
         return (
@@ -88,14 +84,14 @@ export default () => {
       },
     },
     {
-      title: "Username",
+      title: t("USERNAME"),
       dataIndex: "username",
       render: (_, record) => {
         return <>{record?.username}</>
       },
     },
     {
-      title: "Password",
+      title: t("PASSWORD"),
       dataIndex: "password",
       render: (_, record) => {
         return (
@@ -108,13 +104,13 @@ export default () => {
             type="primary"
             size="small"
           >
-            Reset
+            {t("RESET")}
           </Button>
         )
       },
     },
     {
-      title: "Phone",
+      title: t("PHONE"),
       dataIndex: "phone",
       render: (_, record) => {
         return (
@@ -126,7 +122,7 @@ export default () => {
       },
     },
     {
-      title: "Status",
+      title: t("STATUS"),
       dataIndex: "status",
       render: (text, record: IStaff) => (
         <Switch
@@ -142,29 +138,29 @@ export default () => {
             }
           }}
           checked={record.status == "active"}
-          checkedChildren={"Active"}
-          unCheckedChildren={"Inactive"}
+          checkedChildren={t("staff.ACTIVE")}
+          unCheckedChildren={t("staff.INACTIVE")}
         />
       ),
     },
     {
-      title: "Role",
+      title: t("ROLE"),
       dataIndex: "role",
       render: (text, record) => {
         return <>{record?.roleInfo?.name}</>
       },
     },
     {
-      title: "Action",
+      title: t("ACTION"),
       render: (text, record) => (
         <a
           onClick={() => {
             console.log(record)
             setSelectedItem({ ...record })
-            setModal({ ...modal, open: true, title: "Edit" })
+            setModal({ ...modal, open: true, title: t("EDIT") })
           }}
         >
-          Detail
+          {t("DETAIL")}
         </a>
       ),
     },
@@ -189,7 +185,7 @@ export default () => {
                 <Input
                   value={filter.name}
                   onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-                  placeholder="username/name/phone"
+                  placeholder={`${t("USERNAME")}/${t("NAME")}/${t("PHONE")}`}
                 />
               ),
             },
@@ -212,12 +208,12 @@ export default () => {
         title={
           <Button
             onClick={() => {
-              setModal({ ...modal, title: "Add", open: true })
+              setModal({ ...modal, title: t("ADD"), open: true })
               setSelectedItem({})
             }}
             type="primary"
           >
-            + New Staff
+            + {t("staff.NEW_STAFF")}
           </Button>
         }
       >
