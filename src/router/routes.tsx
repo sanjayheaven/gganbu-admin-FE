@@ -17,6 +17,9 @@ const IpWhitelist = SuspenseWrapper(lazy(() => import("../pages/security/ipWhite
 const AccountWhitelist = SuspenseWrapper(lazy(() => import("../pages/security/accountIWhitelist")))
 const RoleInfo = SuspenseWrapper(lazy(() => import("../pages/staff/roleInfo")))
 
+import i18n from "../config/locales"
+const { t } = i18n
+
 export const router = createBrowserRouter([
   ...ConstantRouter.map((i) => ({ ...i, errorElement: <ErrorPage /> })),
   {
@@ -41,14 +44,14 @@ export const routes: IRoute[] = [
   { path: "/", element: <Navigate to="/dashboard" />, hidden: true },
   {
     path: "/dashboard",
-    title: "Dashboard",
+    title: t("router.DASHBOARD"),
     element: <DashBoard />,
     icon: <Gauge />,
     affix: true,
     keepAlive: true,
     children: [
       {
-        title: "Console",
+        title: t("router.DASHBOARD"),
         path: "/dashboard/console",
         element: <DashBoard />,
         keepAlive: true,
@@ -57,19 +60,19 @@ export const routes: IRoute[] = [
   },
   {
     path: "/staff",
-    title: "Staff",
+    title: t("router.STAFF_MANAGE"),
     element: <PageView />,
     icon: <User />,
     children: [
       {
         path: "/staff/staffInfo",
-        title: "Staff Info",
+        title: t("router.STAFF_LIST"),
         element: <StaffInfo />,
         keepAlive: true,
       },
       {
         path: "/staff/roleInfo",
-        title: "Role Info",
+        title: t("router.ROLE_LIST"),
         element: <RoleInfo />,
         keepAlive: true,
       },
@@ -77,13 +80,13 @@ export const routes: IRoute[] = [
   },
   {
     path: "/logger",
-    title: "Logger",
+    title: t("router.LOGGER_MANAGE"),
     element: <PageView />,
     icon: <Printer />,
     children: [
       {
         path: "/logger/login",
-        title: "Login",
+        title: t("router.LOGGER_LOGIN"),
         element: <LoginLogger />,
         keepAlive: true,
       },
@@ -91,19 +94,19 @@ export const routes: IRoute[] = [
   },
   {
     path: "/security",
-    title: "Security",
+    title: t("router.SECURITY_MANAGE"),
     element: <PageView />,
     icon: <ShieldCheck />,
     children: [
       {
         path: "/security/whiteIpInfo",
-        title: "Ip WhiteList",
+        title: t("router.IP_WHITELIST"),
         element: <IpWhitelist />,
         keepAlive: true,
       },
       {
         path: "/security/whiteAccountInfo",
-        title: "Account WhiteList",
+        title: t("router.ACCOUNT_WHITELIST"),
         element: <AccountWhitelist />,
         keepAlive: true,
       },
