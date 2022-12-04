@@ -1,4 +1,4 @@
-import { Input, Button, message, notification, Checkbox, Divider, Dropdown, Menu } from "antd"
+import { Input, Button, message, notification, Checkbox, Divider } from "antd"
 
 import { User, Lock, TwitterLogo, FacebookLogo, GoogleLogo, GithubLogo, Eye, EyeSlash, Translate } from "phosphor-react"
 
@@ -25,6 +25,8 @@ const Login = () => {
 
   const [loading] = useState(false) // login button loading
   const [tabKey] = useState("username")
+
+  const { t } = useTranslation()
 
   const { theme } = useThemeContext()
   const { primaryColor } = theme
@@ -95,7 +97,7 @@ const Login = () => {
                 className=" md:w-[350px] max-w-full"
                 allowClear
                 size="large"
-                placeholder="Username"
+                placeholder={t("USERNAME")}
                 prefix={<User size={20} />}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -110,7 +112,7 @@ const Login = () => {
                 className=" md:w-[350px] max-w-full"
                 size="large"
                 type={!showPassword && "password"}
-                placeholder="Password"
+                placeholder={t("PASSWORD")}
                 prefix={<Lock size={20} />}
                 suffix={
                   (showPassword && (
@@ -129,14 +131,8 @@ const Login = () => {
             children: (
               <>
                 <div className="flex items-center justify-between" style={{ color: primaryColor }}>
-                  <Checkbox style={{ color: primaryColor }}>
-                    {/* 自动登录 */}
-                    Remember Me
-                  </Checkbox>
-                  <div className=" cursor-not-allowed">
-                    {/* 忘记密码 */}
-                    Forgot Password
-                  </div>
+                  <Checkbox style={{ color: primaryColor }}>{t("login.REMEMBER_ME")}</Checkbox>
+                  <div className=" cursor-not-allowed">{t("login.FORGOT_PASSWORD")}</div>
                 </div>
               </>
             ),
@@ -144,7 +140,7 @@ const Login = () => {
           {
             children: (
               <Button block loading={loading} size="large" type="primary" onClick={() => handleLogin()}>
-                Sign In
+                {t("login.SIGN_IN")}
               </Button>
             ),
           },
