@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [0.3.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.2.0...0.3.0) (2022-12-04)
+
+
+### ⬆️ Chores
+
+* add translations for logger ([3c0cd0d](https://github.com/sanjayheaven/gganbu-admin-FE/commit/3c0cd0d29d935f5ab8657331fa568e3ee7ab44ce))
+* add translations for login page ([02481c4](https://github.com/sanjayheaven/gganbu-admin-FE/commit/02481c4b843e8336bc2e1b9e810cd9b3c123bba0))
+* add translations for role info ([78baee0](https://github.com/sanjayheaven/gganbu-admin-FE/commit/78baee0a99e8a9e7631b51a81f5b85de61e66034))
+* add translations for router ([52b798b](https://github.com/sanjayheaven/gganbu-admin-FE/commit/52b798bce96758cf84f22d50c8aeb3e62287fb78))
+* add translations for security ([8b0bcd7](https://github.com/sanjayheaven/gganbu-admin-FE/commit/8b0bcd74bbadcf2cea2425896c5c03034ffab571))
+* add translations for staff info ([3743e71](https://github.com/sanjayheaven/gganbu-admin-FE/commit/3743e71125865db0bdb813ac81a361268d302b80))
+* new directory structure ([b1e76a1](https://github.com/sanjayheaven/gganbu-admin-FE/commit/b1e76a12f9f4282d7fb4e239238d94df74a0a768))
+
+
+### 🐛 Bug Fixes
+
+* hide security management ([b5ea9db](https://github.com/sanjayheaven/gganbu-admin-FE/commit/b5ea9db88efd3bb1385d5d212fdac024f75a29d1))
+
 ## [0.2.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.1.1...0.2.0) (2022-11-27)
 
 
