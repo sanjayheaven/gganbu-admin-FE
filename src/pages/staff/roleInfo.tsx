@@ -65,11 +65,11 @@ export default () => {
   usePageInfoFilterEffect(filter, () => getInfo({ ...pagination, current: 1 }))
 
   const columns: TableColumnsType<IRole> = [
-    { title: "Name", dataIndex: "name" },
-    { title: "Desc", dataIndex: "desc" },
-    { title: "Staff Count", dataIndex: "staffCount" },
+    { title: t("NAME"), dataIndex: "name" },
+    { title: t("DESC"), dataIndex: "desc" },
+    { title: t("role.STAFF_COUNT"), dataIndex: "staffCount" },
     {
-      title: "Action",
+      title: t("ACTION"),
       dataIndex: "action",
       render: (text, record) => {
         return (
@@ -77,10 +77,10 @@ export default () => {
             <a
               onClick={() => {
                 setSelectedItem({ ...record })
-                setModal({ ...modal, open: true, title: "Edit" })
+                setModal({ ...modal, open: true, title: t("EDIT") })
               }}
             >
-              Edit
+              {t("EDIT")}
             </a>
             <a
               className="text-red-600"
@@ -99,7 +99,7 @@ export default () => {
                 })
               }}
             >
-              Delete
+              {t("DELETE")}
             </a>
           </Space>
         )
@@ -121,7 +121,7 @@ export default () => {
                 <Input
                   value={filter.name}
                   onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-                  placeholder="name/desc"
+                  placeholder={`${t("NAME")}/${t("DESC")}`}
                 />
               ),
             },
@@ -133,12 +133,12 @@ export default () => {
         title={
           <Button
             onClick={() => {
-              setModal({ ...modal, title: "Add", open: true })
+              setModal({ ...modal, title: t("ADD"), open: true })
               setSelectedItem({})
             }}
             type="primary"
           >
-            + New Role
+            + {t("role.NEW_ROLE")}
           </Button>
         }
       >

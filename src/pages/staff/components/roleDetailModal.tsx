@@ -4,14 +4,16 @@ import type { IUseSelectedItemRes } from "../../../hooks/useSelectedItem"
 import { Modal, Tree, Form } from "antd"
 import { routesForRoleTree } from "../../../router"
 import { createFormItems } from "../../../components/form/formConfig"
+import { useTranslation } from "react-i18next"
 
 export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSelectedItemRes<IRole>) => {
+  const { t } = useTranslation()
   return (
     <Modal {...modal} className="min-w-max">
       <Form labelCol={{ span: 3 }}>
         {createFormItems([
           {
-            label: "Name",
+            label: t("NAME"),
             required: true,
             children: (
               <Input
@@ -21,7 +23,7 @@ export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSe
             ),
           },
           {
-            label: "Desc",
+            label: t("DESC"),
             required: true,
             children: (
               <Input.TextArea
@@ -33,8 +35,8 @@ export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSe
         ])}
       </Form>
       <div className=" grid grid-cols-3 mt-5 gap-4 ">
-        <div className="text-lg font-bold ">Route Auth</div>
-        <div className="text-lg font-bold ">Content Auth</div>
+        <div className="text-lg font-bold ">{t("role.ROUTE_AUTH")}</div>
+        <div className="text-lg font-bold ">{t("role.CONTENT_AUTH")}</div>
       </div>
       <div className="grid grid-cols-3 mt-5 gap-4 max-h-[40vh] overflow-auto">
         <Tree
