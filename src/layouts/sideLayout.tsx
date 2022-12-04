@@ -26,7 +26,7 @@ export default function SideLayout() {
     }
 
     let contentStyle: ILayoutStyle["contentStyle"] = { margin: 16 }
-    if (theme.contentWidth === "fixed") {
+    if (theme.contentWidth == "fixed") {
       contentStyle = {
         ...contentStyle,
         marginLeft: "auto",
@@ -65,7 +65,7 @@ export default function SideLayout() {
       siderStyle,
       headerStyle,
       contentStyle,
-      headerWrapperStyle: { ...headerWrapperStyle, zIndex: 50, position: "fixed", top: 0 },
+      headerWrapperStyle: { ...headerWrapperStyle, position: "fixed", top: 0 },
     }
   }, [theme])
 

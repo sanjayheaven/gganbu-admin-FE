@@ -9,7 +9,6 @@ export default function Header({
   isMobile = false,
   headerWrapperStyle,
   headerStyle,
-  ...props
 }: {
   isMobile?: boolean
   headerWrapperClass?: string
@@ -22,35 +21,11 @@ export default function Header({
       className={headerWrapperClass}
       style={{
         ...headerWrapperStyle,
-        // zIndex: 50,
-        // ...(theme.fixedHeader && {
-        //   boxShadow: " 0 1px 4px 0 rgb(0 21 41 / 12%)",
-        //   ...(theme.layout == "side" && {
-        //     width: (!theme.collapsed && "calc(100% - 200px)") || "calc(100% - 80px)",
-        //     transition: "all 0.2s",
-        //   }),
-        // }),
+        zIndex: 50,
+        ...(theme.fixedHeader && { boxShadow: " 0 1px 4px 0 rgb(0 21 41 / 12%)" }),
       }}
     >
-      <Layout.Header
-        {...props}
-        hasSider={false}
-        style={{
-          ...headerStyle,
-          // backgroundColor: "white",
-          // ...(theme.layout == "top" && {
-          //   ...(theme.menuStyle == "transparent" && {
-          //     backgroundColor: "transparent",
-          //   }),
-          //   ...(theme.menuStyle == "white" && {
-          //     backgroundColor: "white",
-          //   }),
-          //   ...(theme.menuStyle == "dark" && {
-          //     backgroundColor: theme.menuStyleBgColor,
-          //   }),
-          // }),
-        }}
-      >
+      <Layout.Header hasSider={false} style={{ ...headerStyle }}>
         <>{theme.layout == "side" && <>{(theme.showBread && <Bread />) || <div></div>}</>}</>
         <>
           {theme.layout == "mix" && (
