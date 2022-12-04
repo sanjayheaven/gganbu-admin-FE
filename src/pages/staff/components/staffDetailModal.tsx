@@ -19,14 +19,14 @@ export default ({
   const { t } = useTranslation()
   const formConfig: IFormConfig = [
     {
-      label: "Name",
+      label: t("NAME"),
       required: true,
       children: (
         <Input onChange={(e) => setSelectedItem({ ...selectedItem, name: e.target.value })} value={selectedItem.name} />
       ),
     },
     {
-      label: "Username",
+      label: t("USERNAME"),
       required: true,
       children: (
         <Input
@@ -36,12 +36,12 @@ export default ({
       ),
     },
     !selectedItem._id && {
-      label: "Password",
+      label: t("PASSWORD"),
       required: true,
-      children: <Input disabled placeholder="initial password will be set 1234" />,
+      children: <Input disabled placeholder="initial password will be set as 1234" />,
     },
     {
-      label: "Phone",
+      label: t("PHONE"),
       children: (
         <InputNumber
           className=" w-full"
@@ -51,7 +51,7 @@ export default ({
       ),
     },
     {
-      label: "Role",
+      label: t("ROLE"),
       required: true,
       children: (
         <Select
@@ -75,8 +75,8 @@ export default ({
               status: (value && "active") || "inactive",
             })
           }
-          checkedChildren={"Active"}
-          unCheckedChildren={"Inactive"}
+          checkedChildren={t("staff.ACTIVE")}
+          unCheckedChildren={t("staff.INACTIVE")}
         />
       ),
     },

@@ -4,7 +4,7 @@ import { Input, TableColumnsType, TablePaginationConfig } from "antd"
 
 import { Card, Table, Button, message, Space, Modal } from "antd"
 import FilterAction from "../../components/filterAction"
-import IpWhiteListDetailModal from "./ipDetail"
+import IpWhiteListDetailModal from "./ipDetailModal"
 import { WhitelistApi } from "../../api"
 import {
   useData,
@@ -16,6 +16,7 @@ import {
   useTablePagination,
 } from "../../hooks"
 import { createFormItems } from "../../components/form/formConfig"
+import { useTranslation } from "react-i18next"
 
 export default () => {
   const { filter, setFilter } = useFilter<IFilter>({ type: "ip" })
@@ -24,6 +25,8 @@ export default () => {
   const { modal, setModal } = useModal({})
   const { data, setData } = useData([])
   const { loading, setLoading } = useLoading(false)
+
+  const { t } = useTranslation()
 
   const handleOk = async () => {
     const { ip, desc } = selectedItem
@@ -62,19 +65,19 @@ export default () => {
   }
 
   const columns: TableColumnsType<IWhitelist> = [
-    { title: "Ip", dataIndex: "ip" },
-    { title: "Desc", dataIndex: "desc" },
+    { title: "IP", dataIndex: "ip" },
+    { title: t("DESC"), dataIndex: "desc" },
     {
-      title: "Action",
+      title: t("ACTION"),
       render: (text, record) => (
         <Space>
           <a
             onClick={() => {
               setSelectedItem({ ...record })
-              setModal({ ...modal, open: true, title: "Edit" })
+              setModal({ ...modal, open: true, title: t("EDIT") })
             }}
           >
-            Edit
+            {t("EDIT")}
           </a>
           <a
             className="text-red-600"
@@ -93,7 +96,7 @@ export default () => {
               })
             }}
           >
-            Delete
+            {t("DELETE")}
           </a>
         </Space>
       ),
@@ -110,7 +113,7 @@ export default () => {
         <div className="grid grid-cols-4 gap-4">
           {createFormItems([
             {
-              label: "Name",
+              label: t("SEARCH"),
               className: "mb-0",
               children: (
                 <Input
@@ -128,12 +131,12 @@ export default () => {
         title={
           <Button
             onClick={() => {
-              setModal({ ...modal, title: "Add", open: true })
+              setModal({ ...modal, title: t("ADD"), open: true })
               setSelectedItem({})
             }}
             type="primary"
           >
-            + New Ip
+            + {t("security.NEW_IP")}
           </Button>
         }
       >
