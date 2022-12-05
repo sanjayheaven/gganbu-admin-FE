@@ -55,7 +55,7 @@ export default function TopLayout() {
   return (
     <Layout className="min-h-screen">
       <Header headerStyle={layoutStyle.headerStyle} headerWrapperStyle={layoutStyle.headerWrapperStyle} />
-      <Content contentStyle={layoutStyle.contentStyle}>
+      <Content style={layoutStyle.contentStyle}>
         <Outlet />
       </Content>
       <Footer />

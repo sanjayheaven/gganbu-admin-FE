@@ -4,7 +4,7 @@ import { useOutlet } from "react-router-dom"
 import { useTagContext, useThemeContext } from "../context"
 import { keepAliveRouteKeys } from "../router"
 import KeepAlive from "../components/keepAlive"
-import type { ILayoutClass, ILayoutStyle } from "./utils"
+import type { ILayoutStyle } from "./utils"
 
 import { Sider, Header, Content, Footer } from "./layoutComponents"
 
@@ -43,6 +43,10 @@ export default function SideLayout() {
       top: 0,
       left: 0,
       bottom: 0,
+      boxShadow: "2px 0 8px 0 rgb(29 35 41 / 5%)",
+      ...(theme.menuStyle == "transparent" && { backgroundColor: "transparent" }),
+      ...(theme.menuStyle == "white" && { backgroundColor: "white" }),
+      ...(theme.menuStyle == "dark" && { backgroundColor: theme.menuStyleBgColor }),
     }
 
     let headerWrapperStyle: ILayoutStyle["headerWrapperStyle"] = {}
@@ -69,34 +73,9 @@ export default function SideLayout() {
     }
   }, [theme])
 
-  const layoutClass: ILayoutClass = useMemo(() => {
-    let content = "m-4"
-    let sider = ""
-    let header = ""
-    let headerWrapper = ""
-    sider += "overflow-y-auto overflow-x-hidden fixed top-0 left-0 bottom-0"
-    header += "p-0 w-full flex justify-between items-center bg-white px-5"
-    content += (theme.contentWidth == "fixed" && " mx-auto px-4") || ""
-    content += (theme.contentWidth == "fixed" && " xl:w-[1200px]") || ""
-    if (!theme.fixedHeader) return { sider, content, header, headerWrapper }
-    // fixedheader
-    headerWrapper += "z-50 fixed top-0 w-full"
-    content += (theme.showTags && " mt-[112px]") || " mt-[80px]" // tags boder-width 1px
-    return { sider, content, header, headerWrapper }
-  }, [theme])
-
   return (
     <Layout>
-      <Sider
-        className={layoutClass.sider}
-        style={{
-          position: "fixed",
-          boxShadow: "2px 0 8px 0 rgb(29 35 41 / 5%)",
-          ...(theme.menuStyle == "transparent" && { backgroundColor: "transparent" }),
-          ...(theme.menuStyle == "white" && { backgroundColor: "white" }),
-          ...(theme.menuStyle == "dark" && { backgroundColor: theme.menuStyleBgColor }),
-        }}
-      />
+      <Sider style={layoutStyle.siderStyle} />
       <Layout
         className="min-h-screen"
         style={{
@@ -105,7 +84,7 @@ export default function SideLayout() {
         }}
       >
         <Header headerStyle={layoutStyle.headerStyle} headerWrapperStyle={layoutStyle.headerWrapperStyle} />
-        <Content contentStyle={layoutStyle.contentStyle}>
+        <Content style={layoutStyle.contentStyle}>
           <KeepAlive
             animate={theme.animateName}
             keys={keepAliveRouteKeys.filter((key) => tags.find((i) => i.path == key))}
