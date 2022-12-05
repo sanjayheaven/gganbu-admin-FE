@@ -2,32 +2,63 @@ import { Layout } from "antd"
 import { useMemo } from "react"
 import { Outlet } from "react-router-dom"
 import { useThemeContext } from "../context"
-import { ILayoutClass } from "./utils"
+import { ILayoutClass, ILayoutStyle } from "./utils"
 import { Sider, Header, Content, Footer } from "./layoutComponents"
 
 export default function MixLayout() {
   const { theme } = useThemeContext()
   const { fixedHeader, showTags, collapsed, menuStyle, menuStyleBgColor } = theme
 
-  const layoutClass: ILayoutClass = useMemo(() => {
-    const { fixedHeader, contentWidth } = theme
-    let content = "m-4"
-    const sider = ""
-    let header = ""
-    let headerWrapper = ""
-    header += "p-0 w-full flex justify-between items-center bg-white pr-5"
-    //
-    content += (contentWidth == "fixed" && " mx-auto px-4") || ""
-    content += (contentWidth == "fixed" && " xl:w-[1200px]") || ""
+  const layoutStyle: ILayoutStyle = useMemo((): ILayoutStyle => {
+    const headerStyle: ILayoutStyle["headerStyle"] = {
+      padding: 0,
+      width: "100%",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: "white",
+      paddingRight: 20,
+    }
 
-    if (!fixedHeader) return { sider, content, header, headerWrapper }
-    // fixedheader
-    headerWrapper += "z-50 fixed top-0 w-full"
-    return { sider, content, header, headerWrapper }
+    let contentStyle: ILayoutStyle["contentStyle"] = { margin: 16 }
+    if (theme.contentWidth === "fixed") {
+      contentStyle = {
+        ...contentStyle,
+        marginLeft: "auto",
+        marginRight: "auto",
+        paddingLeft: 16,
+        paddingRight: 16,
+        maxWidth: 1200,
+      }
+    }
+    let headerWrapperStyle: ILayoutStyle["headerWrapperStyle"] = {}
+
+    const siderStyle: ILayoutStyle["siderStyle"] = {
+      boxShadow: "2px 0 8px 0 rgb(29 35 41 / 5%)",
+      ...(fixedHeader && {
+        position: "fixed",
+        ...((showTags && {
+          top: 96,
+          height: "calc(100vh - 96px)",
+        }) || { top: 64, height: "calc(100vh - 64px)" }),
+      }),
+      ...(menuStyle == "transparent" && {
+        backgroundColor: "transparent",
+      }),
+      ...(menuStyle == "white" && { backgroundColor: "white" }),
+      ...(menuStyle == "dark" && { backgroundColor: menuStyleBgColor }),
+    }
+
+    if (!fixedHeader) return { headerStyle, headerWrapperStyle, contentStyle, siderStyle }
+
+    headerWrapperStyle = { ...headerWrapperStyle, zIndex: 50, position: "fixed", top: 0, width: "100%" }
+
+    return { headerStyle, headerWrapperStyle, contentStyle, siderStyle }
   }, [theme])
+
   return (
     <Layout style={{ height: "100%" }}>
-      <Header headerWrapperClass={layoutClass.headerWrapper} className={layoutClass.header} />
+      <Header headerStyle={layoutStyle.headerStyle} headerWrapperStyle={layoutStyle.headerWrapperStyle} />
       <Layout
         style={{
           minHeight: "max-content",
@@ -36,24 +67,7 @@ export default function MixLayout() {
           }),
         }}
       >
-        <Sider
-          className={layoutClass.sider}
-          style={{
-            boxShadow: "2px 0 8px 0 rgb(29 35 41 / 5%)",
-            ...(fixedHeader && {
-              position: "fixed",
-              ...((showTags && {
-                top: 96,
-                height: "calc(100vh - 96px)",
-              }) || { top: 64, height: "calc(100vh - 64px)" }),
-            }),
-            ...(menuStyle == "transparent" && {
-              backgroundColor: "transparent",
-            }),
-            ...(menuStyle == "white" && { backgroundColor: "white" }),
-            ...(menuStyle == "dark" && { backgroundColor: menuStyleBgColor }),
-          }}
-        />
+        <Sider style={layoutStyle.siderStyle} />
         <Layout
           style={{
             transition: "all 0.2s",
@@ -75,7 +89,7 @@ export default function MixLayout() {
             }),
           }}
         >
-          <Content className={`${layoutClass.content} min-h-max`}>
+          <Content style={layoutStyle.contentStyle}>
             <Outlet />
           </Content>
           <Footer />
