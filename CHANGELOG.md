@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## [0.4.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.3.0...0.4.0) (2022-12-07)
+
+
+### ⬆️ Chores
+
+* add isMobile prop ([8d978bc](https://github.com/sanjayheaven/gganbu-admin-FE/commit/8d978bc482480dc72c2d474cc68ed1b392d48ee8))
+* add mobile layout ([745ebf5](https://github.com/sanjayheaven/gganbu-admin-FE/commit/745ebf57762ff3822cd7ea958045b6082057a282))
+* add useDrawer hook ([295ac17](https://github.com/sanjayheaven/gganbu-admin-FE/commit/295ac17a4631e8068d2ab77315fa6cb2cc24622e))
+* layout refactor using inline-style ([3f66123](https://github.com/sanjayheaven/gganbu-admin-FE/commit/3f66123ad67be733d127178601589756bc80c814))
+* update toplayout using inline-style ([c4253fd](https://github.com/sanjayheaven/gganbu-admin-FE/commit/c4253fd919bcda91386c8a6562373c051d74ce3f))
+* updates about algorithm ([db78a2a](https://github.com/sanjayheaven/gganbu-admin-FE/commit/db78a2a4e8c1b0d174b63ff67da4d5d0dfda2acb))
+* updates for mix layout ([07765c2](https://github.com/sanjayheaven/gganbu-admin-FE/commit/07765c2c5382c94560b252278b56a8cd28122eaf))
+* updates for mobile style ([b353d24](https://github.com/sanjayheaven/gganbu-admin-FE/commit/b353d24940fc61284c0fccb979871b388fb14103))
+* updates for sidelayout ([1620c42](https://github.com/sanjayheaven/gganbu-admin-FE/commit/1620c42141316e6733574afbb4cb74aeda6689c3))
+
+
+### 🐛 Bug Fixes
+
+* add menu in mobile layout ([451d06f](https://github.com/sanjayheaven/gganbu-admin-FE/commit/451d06f32751dfa79749caafd4fccccd1a6b7908))
+* add react-color type ([2426837](https://github.com/sanjayheaven/gganbu-admin-FE/commit/2426837bb3218738cd31fb56f44ab1d9e7fa56c9))
+* clear console.log ([9eff847](https://github.com/sanjayheaven/gganbu-admin-FE/commit/9eff8479ac947753a6c879ae8681118943e5efb1))
+* hide setting in mobile layout ([f2192d7](https://github.com/sanjayheaven/gganbu-admin-FE/commit/f2192d74013eade4f4eede6718138d824815155f))
+* modify margin distance ([8855adf](https://github.com/sanjayheaven/gganbu-admin-FE/commit/8855adff2da27f56242d7b160c5940d0e0487496))
+
 ## [0.3.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.2.0...0.3.0) (2022-12-04)
 
 
