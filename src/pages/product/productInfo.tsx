@@ -17,7 +17,7 @@ import {
 import { createFormItems } from "../../components/form/formConfig"
 import { useNavigate } from "react-router-dom"
 
-export default () => {
+export default function ProductInfo() {
   const { filter, setFilter } = useFilter<IFilter>({})
   const { pagination, setPagination } = useTablePagination()
   const { setSelectedItem } = useSelectedItem<Partial<IProduct>>({})

@@ -6,7 +6,11 @@ import { routesForRoleTree } from "../../../router"
 import { createFormItems } from "../../../components/form/formConfig"
 import { useTranslation } from "react-i18next"
 
-export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSelectedItemRes<IRole>) => {
+export default function RoleDetailModal({
+  selectedItem,
+  setSelectedItem,
+  ...modal
+}: ModalProps & IUseSelectedItemRes<IRole>) {
   const { t } = useTranslation()
   return (
     <Modal {...modal} className="min-w-max">

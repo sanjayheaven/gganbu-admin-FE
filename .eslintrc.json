@@ -10,9 +10,7 @@
   "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "root": true,
-  "rules": {
-    "react/display-name": "off" // displayName for debugging
-  },
+  "rules": {},
   "settings": {
     "react": { "version": "detect" }
   }

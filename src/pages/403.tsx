@@ -1,7 +1,7 @@
 import { Result, Button } from "antd"
 import { useNavigate } from "react-router-dom"
 
-export default () => {
+export default function Page300() {
   const navigate = useNavigate()
   return (
     <Result

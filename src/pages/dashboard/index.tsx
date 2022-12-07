@@ -77,7 +77,7 @@ const lineData = [
   { year: "1999", value: 13 },
 ]
 
-export default () => {
+export default function Dashboard() {
   const navigate = useNavigate()
   const [activeKey, setActiveKey] = useState("column")
   const { theme } = useThemeContext()

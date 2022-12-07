@@ -7,7 +7,7 @@ import { useData, useFilter, useLoading, usePageInfoFilterEffect, useTablePagina
 import { createFormItems } from "../../components/form/formConfig"
 import { useNavigate } from "react-router-dom"
 
-export default () => {
+export default function ProductCreate() {
   const { filter } = useFilter<IFilter>({})
   const { pagination, setPagination } = useTablePagination()
   const { setData } = useData<Partial<IProduct>[]>([])

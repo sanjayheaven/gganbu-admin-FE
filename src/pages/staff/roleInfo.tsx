@@ -18,7 +18,7 @@ import {
 import { createFormItems } from "../../components/form/formConfig"
 import { useTranslation } from "react-i18next"
 
-export default () => {
+export default function RoleInfo() {
   const { filter, setFilter } = useFilter<IFilterRole>({})
   const { pagination, setPagination } = useTablePagination()
   const { selectedItem, setSelectedItem } = useSelectedItem<IRole>({})
