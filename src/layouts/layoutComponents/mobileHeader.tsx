@@ -62,7 +62,7 @@ export default function MobileHeader({
           <List onClick={() => setDrawer({ ...drawer, open: true })} size={32} className="mx-4" />
 
           <Dropdown trigger={["hover"]} menu={{ items: MenuItems }}>
-            <div className="px-2 flex items-center">
+            <div className="mx-4 flex items-center">
               <Avatar size="large" icon={<User />} />
             </div>
           </Dropdown>
