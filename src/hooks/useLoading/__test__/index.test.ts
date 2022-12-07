@@ -5,8 +5,8 @@ const setUp = (initState?: boolean) => renderHook(() => useLoading(initState))
 
 describe("useLoading", () => {
   it("test on default value", () => {
-    const { result } = setUp(true)
-    expect(result.current.loading).toBe(true)
+    const { result } = setUp()
+    expect(result.current.loading).toBe(false)
   })
 
   it("test on methods", async () => {
