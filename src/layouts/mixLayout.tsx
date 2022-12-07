@@ -2,7 +2,7 @@ import { Layout } from "antd"
 import { useMemo } from "react"
 import { Outlet } from "react-router-dom"
 import { useThemeContext } from "../context"
-import { ILayoutClass, ILayoutStyle } from "./utils"
+import type { ILayoutStyle } from "./utils"
 import { Sider, Header, Content, Footer } from "./layoutComponents"
 
 export default function MixLayout() {

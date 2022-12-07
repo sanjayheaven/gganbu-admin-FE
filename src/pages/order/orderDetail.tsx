@@ -1,9 +1,9 @@
-import { Card, Table, Button, Tabs } from "antd"
+import { Card, Table } from "antd"
 import { useState } from "react"
 
 export default function OrderDetail() {
   // const [data, setData] = useState([])
-  const [tabKey, setTabKey] = useState<string | number>("1")
+  const [tabKey] = useState<string | number>("1")
 
   const historyColumns = [
     { title: "Name", dataIndex: "name" },

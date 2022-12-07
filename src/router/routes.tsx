@@ -2,8 +2,8 @@ import NotFound from "../pages/404"
 import PageView from "../layouts/layoutComponents/pageView"
 import { createBrowserRouter, Navigate } from "react-router-dom"
 import { IRoute } from "./type"
-import { Gauge, ShieldCheck, User, Printer } from "phosphor-react"
-import SuspenseWrapper from "./lazy"
+import { Gauge, User, Printer } from "phosphor-react"
+import { SuspenseWrapper } from "./lazy"
 import { lazy } from "react"
 import { ConstantRouter } from "./constant"
 import ErrorPage from "./ErrorPage"
@@ -13,8 +13,6 @@ import Redirect from "../pages/redirect"
 const LoginLogger = SuspenseWrapper(lazy(() => import("../pages/logger/loginLogger")))
 const DashBoard = SuspenseWrapper(lazy(() => import("../pages/dashboard/index")))
 const StaffInfo = SuspenseWrapper(lazy(() => import("../pages/staff/staffInfo")))
-const IpWhitelist = SuspenseWrapper(lazy(() => import("../pages/security/ipWhitelist")))
-const AccountWhitelist = SuspenseWrapper(lazy(() => import("../pages/security/accountIWhitelist")))
 const RoleInfo = SuspenseWrapper(lazy(() => import("../pages/staff/roleInfo")))
 
 import i18n from "../config/locales"

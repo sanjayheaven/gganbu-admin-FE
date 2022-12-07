@@ -1,5 +1,5 @@
 import type { MenuProps } from "antd"
-import { Dropdown, Menu } from "antd"
+import { Dropdown } from "antd"
 import { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
 import { lookupLocalStorage } from "../../config/locales"

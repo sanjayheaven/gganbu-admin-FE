@@ -15,7 +15,7 @@ export default function MobileHeader({
   headerWrapperStyle?: CSSProperties
   headerStyle?: CSSProperties
 } & LayoutProps) {
-  const { user, setUser } = useUserContext()
+  const { setUser } = useUserContext()
   const { theme } = useThemeContext()
   const commonHeaderWrapperStyle: ILayoutStyle["headerWrapperStyle"] = {
     zIndex: 50,

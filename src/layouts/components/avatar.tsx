@@ -1,6 +1,6 @@
 import type { MenuProps } from "antd"
 import { Avatar as AvatarAnt, Badge, Dropdown, Input, Tooltip } from "antd"
-import { Menu, Modal } from "antd"
+import { Modal } from "antd"
 import { Globe, Question, Bell, User, GithubLogo } from "phosphor-react"
 import { ArrowsOut, ArrowsIn, MagnifyingGlass } from "phosphor-react"
 

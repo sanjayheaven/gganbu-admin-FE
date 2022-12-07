@@ -1,10 +1,4 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-  createHashRouter,
-  HashRouter as Router,
-  useRoutes,
-} from "react-router-dom"
+import { HashRouter as Router, useRoutes } from "react-router-dom"
 import { useLocation, matchRoutes, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { ConstantRoutes, createRoutesWrapper, createAuthRoutes, IRoute, routes } from "./router"
@@ -22,9 +16,7 @@ import "./config/antd"
 import "./config/locales"
 
 import zhCN from "antd/es/locale/zh_CN"
-import { useTranslation } from "react-i18next"
 import { localLanguage } from "./config/locales"
-import { router } from "./router/routes"
 
 /**
  * here is the entry of router.
