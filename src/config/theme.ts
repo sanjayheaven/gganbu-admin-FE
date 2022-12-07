@@ -20,9 +20,15 @@ export interface ITheme {
   primaryColor?: string
 
   // layout
+  /** current media screen whethe is Mobile size */
+  isMobile?: boolean
+  /** layout: "side" | "top" | "mix" */
   layout?: "side" | "top" | "mix"
+  /** whether fix header */
   fixedHeader?: boolean
+  /** @deprecated */
   stickyHeader?: boolean
+  /** @deprecated */
   fixedSider?: boolean
   contentWidth?: "fluid" | "fixed"
 
