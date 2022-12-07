@@ -5,7 +5,6 @@ const isBrowser = !!(typeof window !== "undefined" && window.document && window.
 /** change NProgress bar & spinner Color */
 export default function useNProgressColor(color: string) {
   useEffect(() => {
-    console.log(color)
     if (!color) return
     if (!isBrowser) return
     const content = document.createTextNode(`

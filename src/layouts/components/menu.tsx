@@ -9,7 +9,7 @@ import { getMenuItems } from "../utils"
 export default function Menu(props: MenuProps) {
   const { user } = useUserContext()
   const { theme } = useThemeContext()
-  const { menuStyle, layout } = theme
+  const { menuStyle, layout, isMobile } = theme
 
   const routeAuth = user?.roleInfo?.routeAuth || []
   const authRoutes = user?.username != "admin" ? createAuthRoutes(routeAuth) : routes
@@ -34,6 +34,8 @@ export default function Menu(props: MenuProps) {
       } else if (item?.children?.some((i) => i.path == pathname)) {
         if (props.mode == "inline") {
           if (collapsed) {
+            // if (collapsed && ["side", "mix"].includes(theme.layout)) {
+            // for side menu, not for mobile layout drawer menu
             setOpenKeys([])
           } else {
             setOpenKeys([item.path])
@@ -48,15 +50,17 @@ export default function Menu(props: MenuProps) {
   }, [pathname, theme, props.mode])
 
   // only when click menuItem, not includes submenu
-  const handleClickMenuItem = (e: { key: string; keyPath: string | string[] }) => {
-    console.log(e.key, 111)
-    setSelectedKeys([e.key])
-    if (e.keyPath.length <= 1) {
+  const handleClickMenuItem: MenuProps["onClick"] = (menuInfo) => {
+    const { key, keyPath } = menuInfo
+    setSelectedKeys([key])
+    if (keyPath?.length <= 1) {
       setOpenKeys([])
     }
-    navigate(e.key)
+    navigate(key)
+    props?.onClick?.(menuInfo)
   }
 
+  /** openKeys only controlable in non TOP layout and non ISMOBIEL  */
   const onOpenChange = (keys: string[]) => {
     // if (keys[0] == "rc-menu-more") return
     const latestOpenKey = keys.find((key) => !openKeys.includes(key))
@@ -84,13 +88,15 @@ export default function Menu(props: MenuProps) {
   }
   return (
     <AntMenu
+      mode={(["top"].includes(theme.layout) && "horizontal") || "inline"}
       theme={(menuStyle == "dark" && "dark") || "light"}
       selectedKeys={selectedKeys}
-      openKeys={(layout != "top" && openKeys) || undefined}
-      onClick={handleClickMenuItem}
-      onOpenChange={(layout != "top" && onOpenChange) || undefined}
+      defaultOpenKeys={(isMobile && openKeys) || undefined}
+      openKeys={(layout != "top" && !isMobile && openKeys) || undefined}
+      onOpenChange={(layout != "top" && !isMobile && onOpenChange) || undefined}
       items={getMenuItems(authRoutes)}
       {...props}
+      onClick={handleClickMenuItem}
     />
   )
 }

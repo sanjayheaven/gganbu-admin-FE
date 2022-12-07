@@ -9,6 +9,7 @@ import useLoading from "./useLoading"
 import useItem from "./useItem"
 import useNProgressColor from "./useNProgressColor"
 
+export { default as useDrawer } from "./useDrawer"
 // export * from "ahooks"
 export {
   useNProgressColor,
@@ -22,6 +23,7 @@ export {
   useData,
   useLoading,
 }
+
 export { useFullscreen, useReactive, useGetState } from "ahooks"
 
 export * from "./useSelectedItem"

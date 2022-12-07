@@ -45,8 +45,6 @@ const RouterAuth = () => {
   console.log(authRoutes, authRoutesWrapper, "看看对应的路由")
   const Element = useRoutes(authRoutesWrapper as any)
 
-  const { t } = useTranslation()
-
   const { pathname } = location
 
   const getStaffByToken = async () => {
@@ -109,7 +107,14 @@ const RouterAuth = () => {
 export default function App() {
   return (
     <ThemeContextProvider>
-      <AntdConfigProvider locale={localLanguage === "zh" && zhCN}>
+      <AntdConfigProvider
+        locale={localLanguage === "zh" && zhCN}
+        // theme={
+        //   {
+        //     algorithm
+        //   }
+        // }
+      >
         <UserContextProvider>
           <TagContextProvider>
             <div className="h-screen">

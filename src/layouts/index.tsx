@@ -14,7 +14,6 @@ export default function BasicLayout() {
   const { theme, setTheme } = useThemeContext()
 
   const fullscreenRef = useRef(null)
-
   const [isFullscreen, { enterFullscreen, exitFullscreen }] = useFullscreen(fullscreenRef, {
     onExit: () => setTheme({ ...theme, isFullscreen: false }),
   })
@@ -35,8 +34,8 @@ export default function BasicLayout() {
       {/* here name id fullscreen to make sure the ant design all component are topper */}
       <div ref={fullscreenRef} id={(isFullscreen && "fullscreen") || "non-fullscreen"}>
         <div className="hidden sm:block">
-          <Setting setShowDrawer={setShowDrawer} open={showDrawer} onClose={() => setShowDrawer(false)} />
           {theme.layout == "mix" ? <MixLayout /> : theme.layout == "top" ? <TopLayout /> : <SideLayout />}
+          <Setting setShowDrawer={setShowDrawer} open={showDrawer} onClose={() => setShowDrawer(false)} />
         </div>
 
         <div className="block sm:hidden">

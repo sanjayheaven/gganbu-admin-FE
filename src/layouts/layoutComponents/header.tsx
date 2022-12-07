@@ -1,64 +1,41 @@
 import type { LayoutProps } from "antd"
+import type { CSSProperties } from "react"
+
 import { Layout } from "antd"
 import { useThemeContext } from "../../context"
 import { Menu, Logo, Tags, Bread, Avatar } from "../components"
+import { ILayoutStyle } from "../utils"
 
 export default function Header({
-  headerWrapperClass,
-  isMobile = false,
-  ...props
-}: { isMobile?: boolean; headerWrapperClass?: string } & LayoutProps) {
+  headerWrapperStyle,
+  headerStyle,
+}: {
+  headerWrapperStyle?: CSSProperties
+  headerStyle?: CSSProperties
+} & LayoutProps) {
   const { theme } = useThemeContext()
-
-  const { fixedHeader, collapsed, layout, showTags, showLogo, showBread } = theme
-
+  const commonHeaderWrapperStyle: ILayoutStyle["headerWrapperStyle"] = {
+    zIndex: 50,
+    ...(theme.fixedHeader && { boxShadow: " 0 1px 4px 0 rgb(0 21 41 / 12%)" }),
+  }
   return (
-    <div
-      className={headerWrapperClass}
-      style={{
-        zIndex: 50,
-        ...(fixedHeader && {
-          boxShadow: " 0 1px 4px 0 rgb(0 21 41 / 12%)",
-          ...(layout == "side" && {
-            width: (!collapsed && "calc(100% - 200px)") || "calc(100% - 80px)",
-            transition: "all 0.2s",
-          }),
-        }),
-      }}
-    >
-      <Layout.Header
-        {...props}
-        hasSider={false}
-        style={{
-          backgroundColor: "white",
-          ...(layout == "top" && {
-            ...(theme.menuStyle == "transparent" && {
-              backgroundColor: "transparent",
-            }),
-            ...(theme.menuStyle == "white" && {
-              backgroundColor: "white",
-            }),
-            ...(theme.menuStyle == "dark" && {
-              backgroundColor: theme.menuStyleBgColor,
-            }),
-          }),
-        }}
-      >
-        <>{layout == "side" && <>{(showBread && <Bread />) || <div></div>}</>}</>
+    <div style={{ ...headerWrapperStyle, ...commonHeaderWrapperStyle }}>
+      <Layout.Header style={{ ...headerStyle }}>
+        <>{theme.layout == "side" && <>{(theme.showBread && <Bread />) || <div></div>}</>}</>
         <>
-          {layout == "mix" && (
+          {theme.layout == "mix" && (
             <div className=" flex items-center">
-              {showLogo && <Logo />}
-              <div className="pl-5">{(showBread && <Bread />) || <div></div>}</div>
+              {theme.showLogo && <Logo />}
+              <div className="pl-5">{(theme.showBread && <Bread />) || <div></div>}</div>
             </div>
           )}
         </>
 
         <>
-          {layout == "top" && (
+          {theme.layout == "top" && (
             <>
-              {showLogo && <Logo />}
-              <Menu style={{ backgroundColor: "transparent" }} className="w-full border-0" mode="horizontal" />
+              {theme.showLogo && <Logo />}
+              <Menu style={{ backgroundColor: "transparent" }} className="w-full border-0" />
             </>
           )}
         </>
@@ -66,7 +43,7 @@ export default function Header({
         <Avatar />
       </Layout.Header>
 
-      <>{showTags && <Tags />}</>
+      <>{theme.showTags && <Tags />}</>
     </div>
   )
 }

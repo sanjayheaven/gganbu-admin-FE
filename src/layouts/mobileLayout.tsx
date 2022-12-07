@@ -1,37 +1,68 @@
 import { Layout } from "antd"
 import { Outlet } from "react-router-dom"
-import { ILayoutClass } from "./utils"
+import type { ILayoutStyle } from "./utils"
 
-import { Header, Content, Footer } from "./layoutComponents"
-import { useMemo } from "react"
+import { Content, Footer, MobileHeader } from "./layoutComponents"
+import { useEffect, useMemo } from "react"
 import { useThemeContext } from "../context"
 
 export default function MobileLayout() {
-  const { theme } = useThemeContext()
+  const { theme, setTheme } = useThemeContext()
 
-  const layoutClass: ILayoutClass = useMemo(() => {
-    const { contentWidth, showTags, fixedHeader } = theme
-    let content = "m-4"
-    const sider = ""
-    let header = ""
-    let headerWrapper = ""
-    header += "p-0 w-full flex justify-between items-center box-content"
-    content += (contentWidth == "fixed" && " mx-auto px-4") || ""
-    content += (contentWidth == "fixed" && " xl:w-[1200px]") || ""
-    if (!fixedHeader) return { sider, content, header, headerWrapper }
-    // fixedheader
-    headerWrapper += "z-50 fixed top-0 w-full"
-    content += (showTags && " mt-[112px]") || " mt-[80px]" // tags boder-width 1px
+  useEffect(() => {
+    setTheme({ ...theme, isMobile: true })
+    return () => {
+      setTheme({ ...theme, isMobile: false })
+    }
+  }, [])
 
-    return { sider, content, header, headerWrapper }
+  const layoutStyle: ILayoutStyle = useMemo((): ILayoutStyle => {
+    let headerStyle: ILayoutStyle["headerStyle"] = {
+      padding: 0,
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      boxSizing: "content-box",
+    }
+    headerStyle = {
+      ...headerStyle,
+      ...{
+        backgroundColor:
+          theme.menuStyle == "transparent"
+            ? "transparent"
+            : theme.menuStyle == "dark"
+            ? theme.menuStyleBgColor
+            : "white",
+      },
+    }
+    let headerWrapperStyle: ILayoutStyle["headerWrapperStyle"] = {}
+
+    let contentStyle: ILayoutStyle["contentStyle"] = { margin: 16 }
+    if (theme.contentWidth === "fixed") {
+      contentStyle = {
+        ...contentStyle,
+        marginLeft: "auto",
+        marginRight: "auto",
+        paddingLeft: 16,
+        paddingRight: 16,
+        maxWidth: 1200,
+      }
+    }
+
+    if (!theme.fixedHeader) {
+      return { headerStyle, headerWrapperStyle, contentStyle }
+    }
+
+    headerWrapperStyle = { ...headerWrapperStyle, zIndex: 50, position: "fixed", top: 0, width: "100%" }
+    contentStyle = { ...contentStyle, marginTop: theme.showTags ? 112 : 80 } // tags boder-width 1px
+
+    return { headerStyle, headerWrapperStyle, contentStyle }
   }, [theme])
 
-  // const theme
-
   return (
-    <Layout className="min-h-screen ">
-      <Header className={layoutClass.header} headerWrapperClass={layoutClass.headerWrapper} />
-      <Content className={layoutClass.content}>
+    <Layout className="min-h-screen max-w-full overflow-x-auto">
+      <MobileHeader headerStyle={layoutStyle.headerStyle} headerWrapperStyle={layoutStyle.headerWrapperStyle} />
+      <Content style={layoutStyle.contentStyle}>
         <Outlet />
       </Content>
       <Footer />

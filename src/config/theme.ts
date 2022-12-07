@@ -9,8 +9,10 @@
  *
  */
 
+import { theme as algorithmTheme } from "antd"
 import { IPreset } from "../components/appear"
 
+const { defaultAlgorithm, darkAlgorithm, compactAlgorithm } = algorithmTheme
 export interface ITheme {
   menuStyle?: "transparent" | "dark" | "white"
   menuStyleColor?: string
@@ -18,9 +20,15 @@ export interface ITheme {
   primaryColor?: string
 
   // layout
+  /** current media screen whethe is Mobile size */
+  isMobile?: boolean
+  /** layout: "side" | "top" | "mix" */
   layout?: "side" | "top" | "mix"
+  /** whether fix header */
   fixedHeader?: boolean
+  /** @deprecated */
   stickyHeader?: boolean
+  /** @deprecated */
   fixedSider?: boolean
   contentWidth?: "fluid" | "fixed"
 
@@ -42,6 +50,9 @@ export interface ITheme {
   // other
   keepAlive?: boolean // if open page keep alive .
   animateName?: IPreset
+
+  /** algorithm preset */
+  algorithm?: "default" | "dark" | "compact"
 }
 
 export const ThemeConfig: ITheme = {
@@ -49,7 +60,7 @@ export const ThemeConfig: ITheme = {
   menuStyleColor: "#FFFFFFA6",
   menuStyleBgColor: "#00152a",
   primaryColor: "#2cc203",
-  layout: "side",
+  layout: "top",
   showTags: true,
   fixedHeader: true,
   showCollapse: true,
@@ -59,4 +70,5 @@ export const ThemeConfig: ITheme = {
   showBread: true,
   showBreadIcon: true,
   animateName: "slideInTop",
+  algorithm: "default",
 }

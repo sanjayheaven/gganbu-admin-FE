@@ -1,6 +1,13 @@
 import type { MenuProps } from "antd"
+import { CSSProperties } from "react"
 import { IRoute } from "../router"
 
+export interface ILayoutStyle {
+  siderStyle?: CSSProperties
+  headerStyle?: CSSProperties
+  contentStyle?: CSSProperties
+  headerWrapperStyle?: CSSProperties
+}
 export interface ILayoutClass {
   sider?: string
   header?: string
