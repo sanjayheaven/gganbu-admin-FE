@@ -1,10 +1,10 @@
-import type { LayoutProps } from "antd"
+import { LayoutProps, MenuProps, Modal } from "antd"
 import type { ILayoutStyle } from "../utils"
 
 import { Avatar, Drawer, Dropdown, Layout } from "antd"
 import { List, User, X } from "phosphor-react"
 import { CSSProperties } from "react"
-import { useThemeContext } from "../../context"
+import { useThemeContext, useUserContext } from "../../context"
 import { useDrawer } from "../../hooks"
 import { Menu, Tags } from "../components"
 
@@ -15,6 +15,7 @@ export default function MobileHeader({
   headerWrapperStyle?: CSSProperties
   headerStyle?: CSSProperties
 } & LayoutProps) {
+  const { user, setUser } = useUserContext()
   const { theme } = useThemeContext()
   const commonHeaderWrapperStyle: ILayoutStyle["headerWrapperStyle"] = {
     zIndex: 50,
@@ -22,6 +23,37 @@ export default function MobileHeader({
   }
 
   const { drawer, setDrawer } = useDrawer({ placement: "left" })
+  const Logout = async () => {
+    localStorage.removeItem("userInfo")
+    localStorage.removeItem("accessToken")
+    localStorage.removeItem("refreshToken")
+    setUser({})
+  }
+
+  const MenuItems: MenuProps["items"] = [
+    { label: "User Profile", key: "user" },
+    {
+      label: (
+        <a
+          onClick={() =>
+            Modal.confirm({
+              // parentContext:,
+
+              title: "Hint",
+              content: "Are you sure you want to logout?",
+              onOk: async () => {
+                await Logout()
+                window.location.reload()
+              },
+            })
+          }
+        >
+          Log Out
+        </a>
+      ),
+      key: "logout",
+    },
+  ]
 
   return (
     <>
@@ -29,7 +61,7 @@ export default function MobileHeader({
         <Layout.Header style={{ ...headerStyle }}>
           <List onClick={() => setDrawer({ ...drawer, open: true })} size={32} className="mx-4" />
 
-          <Dropdown trigger={["hover"]} menu={{ items: [] }}>
+          <Dropdown trigger={["hover"]} menu={{ items: MenuItems }}>
             <div className="px-2 flex items-center">
               <Avatar size="large" icon={<User />} />
             </div>
