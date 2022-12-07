@@ -1,19 +1,17 @@
 import type { LayoutProps } from "antd"
-import { Layout } from "antd"
-import { List } from "phosphor-react"
-import type { CSSProperties } from "react"
+import type { ILayoutStyle } from "../utils"
+
+import { Avatar, Drawer, Dropdown, Layout } from "antd"
+import { List, User, X } from "phosphor-react"
+import { CSSProperties } from "react"
 import { useThemeContext } from "../../context"
-import { Menu, Logo, Tags, Bread, Avatar } from "../components"
-import { ILayoutStyle } from "../utils"
+import { useDrawer } from "../../hooks"
+import { Menu, Tags } from "../components"
 
 export default function MobileHeader({
-  headerWrapperClass,
-  isMobile = false,
   headerWrapperStyle,
   headerStyle,
 }: {
-  isMobile?: boolean
-  headerWrapperClass?: string
   headerWrapperStyle?: CSSProperties
   headerStyle?: CSSProperties
 } & LayoutProps) {
@@ -22,33 +20,39 @@ export default function MobileHeader({
     zIndex: 50,
     ...(theme.fixedHeader && { boxShadow: " 0 1px 4px 0 rgb(0 21 41 / 12%)" }),
   }
+
+  const { drawer, setDrawer } = useDrawer({ placement: "left" })
+
   return (
-    <div style={{ ...headerWrapperStyle, ...commonHeaderWrapperStyle }}>
-      <Layout.Header style={{ ...headerStyle }}>
-        {/* <>{theme.layout == "side" && <>{(theme.showBread && <Bread />) || <div></div>}</>}</> */}
-        {/* <>
-          {theme.layout == "mix" && (
-            <div className=" flex items-center">
-              {theme.showLogo && <Logo />}
-              <div className="pl-5">{(theme.showBread && <Bread />) || <div></div>}</div>
+    <>
+      <div style={{ ...headerWrapperStyle, ...commonHeaderWrapperStyle }}>
+        <Layout.Header style={{ ...headerStyle }}>
+          <List onClick={() => setDrawer({ ...drawer, open: true })} size={32} className="mx-4" />
+
+          <Dropdown trigger={["hover"]} menu={{ items: [] }}>
+            <div className="px-2 flex items-center">
+              <Avatar size="large" icon={<User />} />
             </div>
-          )}
-        </> */}
+          </Dropdown>
+        </Layout.Header>
 
-        {theme.showLogo && <Logo />}
-        <List size={32} />
-        {/* <>
-          {theme.layout == "top" && (
-            <>
-              <Menu style={{ backgroundColor: "transparent" }} className="w-full border-0" mode="horizontal" />
-            </>
-          )}
-        </> */}
+        <>{theme.showTags && <Tags />}</>
+      </div>
 
-        {/* <Avatar /> */}
-      </Layout.Header>
-
-      <>{theme.showTags && <Tags />}</>
-    </div>
+      <Drawer
+        {...drawer}
+        closable={false}
+        onClose={() => setDrawer({ ...drawer, open: false })}
+        bodyStyle={{ padding: 0 }}
+      >
+        <div className=" py-4 px-5 border-solid border-b-[#0505050f] border-0 border-b-[1px] ">
+          <div className=" flex items-center justify-between min-w-full">
+            <div className="text-3xl font-bold">Gganbu</div>
+            <X size={32} onClick={() => setDrawer({ ...drawer, open: false })} />
+          </div>
+        </div>
+        <Menu mode="inline" onClick={() => setDrawer({ ...drawer, open: false })} onOpenChange={undefined} />
+      </Drawer>
+    </>
   )
 }

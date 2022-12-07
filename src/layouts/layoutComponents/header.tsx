@@ -1,18 +1,15 @@
 import type { LayoutProps } from "antd"
-import { Layout } from "antd"
 import type { CSSProperties } from "react"
+
+import { Layout } from "antd"
 import { useThemeContext } from "../../context"
 import { Menu, Logo, Tags, Bread, Avatar } from "../components"
 import { ILayoutStyle } from "../utils"
 
 export default function Header({
-  headerWrapperClass,
-  isMobile = false,
   headerWrapperStyle,
   headerStyle,
 }: {
-  isMobile?: boolean
-  headerWrapperClass?: string
   headerWrapperStyle?: CSSProperties
   headerStyle?: CSSProperties
 } & LayoutProps) {
@@ -23,7 +20,7 @@ export default function Header({
   }
   return (
     <div style={{ ...headerWrapperStyle, ...commonHeaderWrapperStyle }}>
-      <Layout.Header hasSider={false} style={{ ...headerStyle }}>
+      <Layout.Header style={{ ...headerStyle }}>
         <>{theme.layout == "side" && <>{(theme.showBread && <Bread />) || <div></div>}</>}</>
         <>
           {theme.layout == "mix" && (
@@ -38,7 +35,7 @@ export default function Header({
           {theme.layout == "top" && (
             <>
               {theme.showLogo && <Logo />}
-              <Menu style={{ backgroundColor: "transparent" }} className="w-full border-0" mode="horizontal" />
+              <Menu style={{ backgroundColor: "transparent" }} className="w-full border-0" />
             </>
           )}
         </>

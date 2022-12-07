@@ -256,7 +256,7 @@ export default function Setting({
               </>
             }
             trigger="hover"
-            onVisibleChange={(value) => !value && setTheme({ ...theme, primaryColor: pickerColor })}
+            onOpenChange={(value) => !value && setTheme({ ...theme, primaryColor: pickerColor })}
           >
             <div
               className="float-right w-14 h-5 bg-white rounded-[2px] flex justify-center items-center cursor-pointer"

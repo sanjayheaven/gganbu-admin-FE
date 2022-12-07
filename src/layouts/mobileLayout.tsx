@@ -3,11 +3,18 @@ import { Outlet } from "react-router-dom"
 import type { ILayoutStyle } from "./utils"
 
 import { Content, Footer, MobileHeader } from "./layoutComponents"
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { useThemeContext } from "../context"
 
 export default function MobileLayout() {
-  const { theme } = useThemeContext()
+  const { theme, setTheme } = useThemeContext()
+
+  useEffect(() => {
+    setTheme({ ...theme, isMobile: true })
+    return () => {
+      setTheme({ ...theme, isMobile: false })
+    }
+  }, [])
 
   const layoutStyle: ILayoutStyle = useMemo((): ILayoutStyle => {
     let headerStyle: ILayoutStyle["headerStyle"] = {
