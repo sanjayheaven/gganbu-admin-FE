@@ -1,11 +1,12 @@
 import { defineConfig, type PluginOption } from "vite"
 import react from "@vitejs/plugin-react"
+import viteCompression from "vite-plugin-compression"
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/", // default '/', need to modify when deploy to GitHub Pages
   server: { port: 9527 },
-  plugins: [react()],
+  plugins: [react(), viteCompression()],
 
   esbuild: {
     // pure: ["console.log"],
