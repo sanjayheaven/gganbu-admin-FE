@@ -60,7 +60,7 @@ export const ThemeConfig: ITheme = {
   menuStyleColor: "#FFFFFFA6",
   menuStyleBgColor: "#00152a",
   primaryColor: "#2cc203",
-  layout: "top",
+  layout: "side",
   showTags: true,
   fixedHeader: true,
   showCollapse: true,
