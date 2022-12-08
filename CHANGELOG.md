@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## [0.5.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.4.0...0.5.0) (2022-12-08)
+
+
+### ✨ Features
+
+* add unit test using jest ([506a2ad](https://github.com/sanjayheaven/gganbu-admin-FE/commit/506a2ad40bdd1bb041b32756d61cb9ce5c864df9))
+
+
+### 🔧 Continuous Integration
+
+* add test stage to workflow ([802d14c](https://github.com/sanjayheaven/gganbu-admin-FE/commit/802d14c33c4e39b32870009e5f27135bc1a33875))
+
+
+### 🐛 Bug Fixes
+
+* eslint error @typescript-eslint/no-unused-vars ([5afb4aa](https://github.com/sanjayheaven/gganbu-admin-FE/commit/5afb4aade971c601f22f050625688ff742b650be))
+* eslint error react/display-name ([b3e17a7](https://github.com/sanjayheaven/gganbu-admin-FE/commit/b3e17a711a6fc549b0f365a1cebcf33951bd87cd))
+* update hook useItem & usePageInfo ([7c80f4c](https://github.com/sanjayheaven/gganbu-admin-FE/commit/7c80f4cd0abcb1aaa728173e71a62fcdc17b7a6a))
+
+
+### ✅ Tests
+
+* add useFilter test ([2f8b633](https://github.com/sanjayheaven/gganbu-admin-FE/commit/2f8b633eb249492ae57ac1f100d0dea6db3e9159))
+* add useItem test ([01ab29c](https://github.com/sanjayheaven/gganbu-admin-FE/commit/01ab29c14b12cd3735f8cc1e09d423c72c73e865))
+* add useLoading test ([38dcc8e](https://github.com/sanjayheaven/gganbu-admin-FE/commit/38dcc8e924066c70a8a7a36ffa0f22e5e9ffccc6))
+* amend default value ([6fe8667](https://github.com/sanjayheaven/gganbu-admin-FE/commit/6fe866787799bc386a57e45f1440aa9a9ebfe496))
+* fix useData ([f6ba100](https://github.com/sanjayheaven/gganbu-admin-FE/commit/f6ba100cb93bd1a3a145f4bcef5f9e13390bba29))
+
 ## [0.4.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.3.0...0.4.0) (2022-12-07)
 
 
