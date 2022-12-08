@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## [0.5.1](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.5.0...0.5.1) (2022-12-08)
+
+
+### 🔧 Continuous Integration
+
+* add workflow_dispatch event trigger ([99936d6](https://github.com/sanjayheaven/gganbu-admin-FE/commit/99936d6c2a8d54d1dc93f542ac16a3e088efd948))
+
+
+### 🐎 Performance Improvements
+
+* add meta description for better SEO ([9020374](https://github.com/sanjayheaven/gganbu-admin-FE/commit/90203746c7acfdeeb7fe986fea418242e90c46fd))
+
+
+### 👷‍ Build System
+
+* add compress when build ([52201f8](https://github.com/sanjayheaven/gganbu-admin-FE/commit/52201f89ae13736f5437a28d721a327e61f46b64))
+* add visualizer ([46661af](https://github.com/sanjayheaven/gganbu-admin-FE/commit/46661aff2e9b79fe57b5a533faaf754e00ecf2d0))
+
+
+### 🐛 Bug Fixes
+
+* set default layout - side ([0295cb1](https://github.com/sanjayheaven/gganbu-admin-FE/commit/0295cb1ccf8668182ccbb1c5875b358576fb3195))
+
 ## [0.5.0](https://github.com/sanjayheaven/gganbu-admin-FE/compare/0.4.0...0.5.0) (2022-12-08)
 
 
