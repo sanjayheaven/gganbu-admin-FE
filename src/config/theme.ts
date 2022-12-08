@@ -9,10 +9,10 @@
  *
  */
 
-import { theme as algorithmTheme } from "antd"
+// import { theme as algorithmTheme } from "antd"
 import { IPreset } from "../components/appear"
 
-const { defaultAlgorithm, darkAlgorithm, compactAlgorithm } = algorithmTheme
+// const { defaultAlgorithm, darkAlgorithm, compactAlgorithm } = algorithmTheme
 export interface ITheme {
   menuStyle?: "transparent" | "dark" | "white"
   menuStyleColor?: string

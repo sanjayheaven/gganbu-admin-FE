@@ -1,4 +1,4 @@
-import { Dropdown, Menu, MenuProps, Tag } from "antd"
+import { Dropdown, MenuProps, Tag } from "antd"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useTagContext, useThemeContext } from "../../context"
 import { DndContext, useSensors, useSensor, MouseSensor } from "@dnd-kit/core"
@@ -7,7 +7,6 @@ import { horizontalListSortingStrategy } from "@dnd-kit/sortable"
 
 import { SortableItem } from "../../components/sort"
 import { ArrowClockwise, ArrowLineRight, ArrowsInLineHorizontal, CaretDown, X } from "phosphor-react"
-import { IRoute } from "../../router"
 
 const iconSize = 22
 const menuIconSize = 20
@@ -60,8 +59,6 @@ export default function Tags() {
           {/* sortable */}
           <div className="flex items-center ">
             {tags.map((tag, index) => {
-              const { affix } = tag
-
               return (
                 <SortableItem key={tag.path} id={tag.path}>
                   <Dropdown

@@ -15,7 +15,7 @@ import ResetPasswordModal from "./components/resetPasswordModal"
 import { useTranslation } from "react-i18next"
 import { statusOptions } from "./utils"
 
-export default () => {
+export default function StaffInfo() {
   const { filter, setFilter } = useFilter<IFilterStaff>({})
   const { pagination, setPagination } = useTablePagination()
   const { selectedItem, setSelectedItem } = useSelectedItem<IStaff>({})

@@ -7,7 +7,11 @@ import { createFormItems } from "../../components/form/formConfig"
 import { useTranslation } from "react-i18next"
 
 // This is for Add & Edit
-export default ({ selectedItem, setSelectedItem, ...modal }: ModalProps & IUseSelectedItemRes<Partial<IWhitelist>>) => {
+export default function IpDetailModal({
+  selectedItem,
+  setSelectedItem,
+  ...modal
+}: ModalProps & IUseSelectedItemRes<Partial<IWhitelist>>) {
   const { t } = useTranslation()
   return (
     <Modal {...modal}>

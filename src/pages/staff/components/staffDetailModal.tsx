@@ -7,7 +7,7 @@ import { IUseSelectedItemRes } from "../../../hooks/useSelectedItem"
 import { IStaff } from "../type"
 
 // This is for Add & Edit
-export default ({
+export default function StaffDetailModal({
   selectedItem,
   setSelectedItem,
   roleOptions,
@@ -15,7 +15,7 @@ export default ({
 }: ModalProps &
   IUseSelectedItemRes<IStaff> & {
     roleOptions?: { label?: ReactNode; value?: string }[]
-  }) => {
+  }) {
   const { t } = useTranslation()
   const formConfig: IFormConfig = [
     {

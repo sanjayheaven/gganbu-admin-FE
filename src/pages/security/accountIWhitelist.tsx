@@ -18,7 +18,7 @@ import {
 import { createFormItems } from "../../components/form/formConfig"
 import { useTranslation } from "react-i18next"
 
-export default () => {
+export default function AccountIWhitelist() {
   const { filter, setFilter } = useFilter<IFilter>({ type: "account" })
   const { pagination, setPagination } = useTablePagination()
   const { selectedItem, setSelectedItem } = useSelectedItem<Partial<IWhitelist>>({})
