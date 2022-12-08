@@ -15,8 +15,8 @@ export default function usePageInfo<T extends object, U extends object[]>({
   initFilter,
 }: IUsePageInfoProps<T, U>) {
   const { loading, setLoading } = useLoading(false)
-  const { filter, setFilter } = useFilter<T>(initFilter)
-  const { data, setData } = useData<U>(initData)
+  const { filter, setFilter } = useFilter<typeof initFilter>(initFilter)
+  const { data, setData } = useData<typeof initData>(initData)
   const { pagination, setPagination } = usePagination(initPagination)
 
   return {
