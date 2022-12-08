@@ -27,10 +27,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: Install, Lint, Build
+      - name: Install, Lint, Test, Build
         run: |
           npm install
           npm run lint
+          npm run test
           npm run build
       - name: Deploy to Vercel
         run: |
