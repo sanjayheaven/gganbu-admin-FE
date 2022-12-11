@@ -4,7 +4,7 @@ import MixLayout from "./mixLayout"
 import TopLayout from "./topLayout"
 import SideLayout from "./sideLayout"
 import { Setting } from "./components"
-import { useFullscreen } from "ahooks"
+import { useFullscreen, useSize } from "ahooks"
 import { useNProgressColor } from "../hooks"
 import MobileLayout from "./mobileLayout"
 import { FloatButton } from "antd"
@@ -18,6 +18,13 @@ export default function BasicLayout() {
     onExit: () => setTheme({ ...theme, isFullscreen: false }),
   })
 
+  const size = useSize(fullscreenRef)
+
+  if (size?.width > 640 && theme.isMobile) {
+    setTheme({ ...theme, isMobile: false })
+  } else if (size?.width <= 640 && !theme.isMobile) {
+    setTheme({ ...theme, isMobile: true })
+  }
   // set nprogress bar color
   useNProgressColor(theme.primaryColor)
 

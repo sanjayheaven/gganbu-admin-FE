@@ -9,12 +9,12 @@ import { useThemeContext } from "../context"
 export default function MobileLayout() {
   const { theme, setTheme } = useThemeContext()
 
-  useEffect(() => {
-    setTheme({ ...theme, isMobile: true })
-    return () => {
-      setTheme({ ...theme, isMobile: false })
-    }
-  }, [])
+  // useEffect(() => {
+  //   setTheme({ ...theme, isMobile: true })
+  //   return () => {
+  //     setTheme({ ...theme, isMobile: false })
+  //   }
+  // }, [])
 
   const layoutStyle: ILayoutStyle = useMemo((): ILayoutStyle => {
     let headerStyle: ILayoutStyle["headerStyle"] = {
@@ -60,7 +60,7 @@ export default function MobileLayout() {
   }, [theme])
 
   return (
-    <Layout className="min-h-screen max-w-full overflow-x-auto">
+    <Layout className="min-h-screen max-w-full overflow-x-auto sm:hidden">
       <MobileHeader headerStyle={layoutStyle.headerStyle} headerWrapperStyle={layoutStyle.headerWrapperStyle} />
       <Content style={layoutStyle.contentStyle}>
         <Outlet />
