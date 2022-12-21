@@ -3,16 +3,18 @@ import react from "@vitejs/plugin-react"
 import viteCompression from "vite-plugin-compression"
 import { visualizer } from "rollup-plugin-visualizer"
 
+const isDev = process.env.NODE_ENV === "development"
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/", // default '/', need to modify when deploy to GitHub Pages
   server: { port: 9527 },
-  plugins: [react(), viteCompression(), visualizer()],
+  plugins: [react(), viteCompression(), isDev && visualizer()].filter(Boolean) as any,
   esbuild: {
     // pure: ["console.log"],
     drop: ["console", "debugger"],
   },
   build: {
+    sourcemap: true,
     chunkSizeWarningLimit: 500,
     minify: "esbuild", // same as default value
     rollupOptions: {
