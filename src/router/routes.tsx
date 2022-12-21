@@ -37,9 +37,9 @@ export const router = createBrowserRouter([
   },
 ])
 
-// Note: Path shoule be FULL from / to make path is only
-export const routes: IRoute[] = [
-  { path: "/", element: <Navigate to="/dashboard" />, hidden: true },
+// Note: Path shouled be FULL from / to make path is only
+export const routes = [
+  { path: "/", element: <Navigate to="/dashboard" replace />, hidden: true },
   {
     path: "/dashboard",
     title: t("router.DASHBOARD"),

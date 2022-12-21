@@ -1,7 +1,7 @@
-import { HashRouter as Router, useRoutes } from "react-router-dom"
+import { BrowserRouter as Router, useRoutes } from "react-router-dom"
 import { useLocation, matchRoutes, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
-import { ConstantRoutes, createRoutesWrapper, createAuthRoutes, IRoute, routes } from "./router"
+import { ConstantRoutes, createRoutesWrapper, createAuthRoutes, IRoute, routes, router } from "./router"
 
 import { TagContextProvider, useTagContext, useUserContext } from "./context"
 import { UserContextProvider, ThemeContextProvider } from "./context"
@@ -99,18 +99,10 @@ const RouterAuth = () => {
 export default function App() {
   return (
     <ThemeContextProvider>
-      <AntdConfigProvider
-        locale={localLanguage === "zh" && zhCN}
-        // theme={
-        //   {
-        //     algorithm
-        //   }
-        // }
-      >
+      <AntdConfigProvider locale={localLanguage === "zh" && zhCN}>
         <UserContextProvider>
           <TagContextProvider>
             <div className="h-screen">
-              {/* <RouterProvider router={router} /> */}
               <Router>
                 <RouterAuth />
               </Router>
