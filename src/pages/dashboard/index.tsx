@@ -6,8 +6,9 @@ import orderswaiting from "../../assets/images/orderswaiting.png"
 import ordersdelivering from "../../assets/images/ordersdelivering.png"
 
 import { Column, Pie, Line } from "@ant-design/plots"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useThemeContext } from "../../context"
+import { useLoading } from "../../hooks"
 
 const data = [
   { title: "New Customers", src: newcustomer, value: 1009 },
@@ -82,6 +83,7 @@ export default function Dashboard() {
   const [activeKey, setActiveKey] = useState("column")
   const { theme } = useThemeContext()
   const { primaryColor } = theme
+  const { loading, setLoading } = useLoading()
 
   const columnConfig = {
     data: columnData,
@@ -110,12 +112,31 @@ export default function Dashboard() {
     interactions: [{ type: "marker-active" }],
   }
 
+  useEffect(() => {
+    setLoading(true)
+    try {
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      // setLoading(false)
+    }
+  }, [])
+
   return (
     <>
       <div className="grid grid-cols-4 gap-4 mb-3">
         {data.map((item) => {
           return (
-            <Card key={item.title} className="p-0" hoverable={!!item.to} onClick={() => item.to && navigate(item.to)}>
+            <Card
+              loading={loading}
+              key={item.title}
+              className="p-0"
+              hoverable={!!item.to}
+              onClick={() => item.to && navigate(item.to)}
+            >
               <div className="flex items-center">
                 <div className="px-3">
                   <img className=" w-16 h-auto" src={item.src} alt="logo" />
@@ -131,6 +152,7 @@ export default function Dashboard() {
       </div>
       <div className="grid grid-cols-4 gap-4">
         <Card
+          loading={loading}
           tabList={[
             { key: "column", tab: "Sales" },
             { key: "line", tab: "Trend" },
@@ -142,7 +164,7 @@ export default function Dashboard() {
           {activeKey == "column" && <Column {...columnConfig} />}
           {activeKey == "line" && <Line {...lineConfig} />}
         </Card>
-        <Card title="Catalogue">
+        <Card loading={loading} title="Catalogue">
           <Pie {...pieConfig} />
         </Card>
       </div>
