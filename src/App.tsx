@@ -17,6 +17,9 @@ import "./config/locales"
 
 import zhCN from "antd/es/locale/zh_CN"
 import { localLanguage } from "./config/locales"
+import { Provider } from "react-redux"
+import store, { persistor } from "./store"
+import { PersistGate } from "redux-persist/integration/react"
 
 /**
  * here is the entry of router.
@@ -98,18 +101,22 @@ const RouterAuth = () => {
 
 export default function App() {
   return (
-    <ThemeContextProvider>
-      <AntdConfigProvider locale={localLanguage === "zh" && zhCN}>
-        <UserContextProvider>
-          <TagContextProvider>
-            <div className="h-screen">
-              <Router>
-                <RouterAuth />
-              </Router>
-            </div>
-          </TagContextProvider>
-        </UserContextProvider>
-      </AntdConfigProvider>
-    </ThemeContextProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeContextProvider>
+          <AntdConfigProvider locale={localLanguage === "zh" && zhCN}>
+            <UserContextProvider>
+              <TagContextProvider>
+                <div className="h-screen">
+                  <Router>
+                    <RouterAuth />
+                  </Router>
+                </div>
+              </TagContextProvider>
+            </UserContextProvider>
+          </AntdConfigProvider>
+        </ThemeContextProvider>
+      </PersistGate>
+    </Provider>
   )
 }
