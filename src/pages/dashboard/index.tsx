@@ -1,35 +1,17 @@
 import { Card } from "antd"
 import { useNavigate } from "react-router-dom"
-import newcustomer from "../../assets/images/newcustomer.png"
-import orderstoday from "../../assets/images/orderstoday.png"
-import orderswaiting from "../../assets/images/orderswaiting.png"
-import ordersdelivering from "../../assets/images/ordersdelivering.png"
 
 import { Column, Pie, Line } from "@ant-design/plots"
 import { useEffect, useState } from "react"
 import { useThemeContext } from "../../context"
 import { useLoading } from "../../hooks"
+import { NewCustomer, OrdersDelivering, OrdersToday, OrdersWaiting } from "../../assets"
 
 const data = [
-  { title: "New Customers", src: newcustomer, value: 1009 },
-  {
-    title: "Orders Today",
-    src: orderstoday,
-    value: 56,
-    to: "/order/orderInfo",
-  },
-  {
-    title: "Orders Waiting",
-    src: orderswaiting,
-    to: "/order/orderInfo",
-    value: 23,
-  },
-  {
-    title: "Orders Delivering",
-    src: ordersdelivering,
-    to: "/order/orderInfo",
-    value: 16,
-  },
+  { title: "New Customers", src: NewCustomer, value: 1009 },
+  { title: "Orders Today", src: OrdersToday, value: 56, to: "/order/orderInfo" },
+  { title: "Orders Waiting", src: OrdersWaiting, to: "/order/orderInfo", value: 23 },
+  { title: "Orders Delivering", src: OrdersDelivering, to: "/order/orderInfo", value: 16 },
 ]
 
 const columnData = [
